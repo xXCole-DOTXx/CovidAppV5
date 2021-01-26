@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Covid19ModelStoreContainer" CdmEntityContainer="Covid19Entities">
+    <EntitySetMapping Name="Case_Log">
+      <EntityTypeMapping TypeName="Covid19Model.Case_Log">
+        <MappingFragment StoreEntitySet="Case_Log">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+          <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+          <ScalarProperty Name="Division_District" ColumnName="Division/District" />
+          <ScalarProperty Name="OrgNumber" ColumnName="OrgNumber" />
+          <ScalarProperty Name="DateOfTest" ColumnName="DateOfTest" />
+          <ScalarProperty Name="DateOfExposure" ColumnName="DateOfExposure" />
+          <ScalarProperty Name="NumberOfExposed" ColumnName="NumberOfExposed" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="PathToFile" ColumnName="PathToFile" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Emergency_Leave">
+      <EntityTypeMapping TypeName="Covid19Model.Emergency_Leave">
+        <MappingFragment StoreEntitySet="Emergency_Leave">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+          <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+          <ScalarProperty Name="Division_District" ColumnName="Division/District" />
+          <ScalarProperty Name="OrgNumber" ColumnName="OrgNumber" />
+          <ScalarProperty Name="UnableToTelework" ColumnName="UnableToTelework" />
+          <ScalarProperty Name="CaringForMinor" ColumnName="CaringForMinor" />
+          <ScalarProperty Name="SpecialCircumstance" ColumnName="SpecialCircumstance" />
+          <ScalarProperty Name="Annual" ColumnName="Annual" />
+          <ScalarProperty Name="PaidSick" ColumnName="PaidSick" />
+          <ScalarProperty Name="EmergencyPaidSick" ColumnName="EmergencyPaidSick" />
+          <ScalarProperty Name="Unpaid" ColumnName="Unpaid" />
+          <ScalarProperty Name="LeaveFrom" ColumnName="LeaveFrom" />
+          <ScalarProperty Name="LeaveTo" ColumnName="LeaveTo" />
+          <ScalarProperty Name="PathToFile" ColumnName="PathToFile" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Family_Leave">
+      <EntityTypeMapping TypeName="Covid19Model.Family_Leave">
+        <MappingFragment StoreEntitySet="Family_Leave">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+          <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+          <ScalarProperty Name="Division_District" ColumnName="Division/District" />
+          <ScalarProperty Name="OrgNumber" ColumnName="OrgNumber" />
+          <ScalarProperty Name="QuarantineOrder" ColumnName="QuarantineOrder" />
+          <ScalarProperty Name="AdviseToSelfQuarantine" ColumnName="AdviseToSelfQuarantine" />
+          <ScalarProperty Name="Symptoms" ColumnName="Symptoms" />
+          <ScalarProperty Name="CaringForPerson" ColumnName="CaringForPerson" />
+          <ScalarProperty Name="ChildCareUnavailable" ColumnName="ChildCareUnavailable" />
+          <ScalarProperty Name="SimilarConditions" ColumnName="SimilarConditions" />
+          <ScalarProperty Name="Annual" ColumnName="Annual" />
+          <ScalarProperty Name="PaidSick" ColumnName="PaidSick" />
+          <ScalarProperty Name="EmergencyPaidSick" ColumnName="EmergencyPaidSick" />
+          <ScalarProperty Name="Unpaid" ColumnName="Unpaid" />
+          <ScalarProperty Name="LeaveFrom" ColumnName="LeaveFrom" />
+          <ScalarProperty Name="LeaveTo" ColumnName="LeaveTo" />
+          <ScalarProperty Name="PathToFile" ColumnName="PathToFile" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

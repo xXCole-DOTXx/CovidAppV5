@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Covid19Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Case_Log">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone1" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone2" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Division/District" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OrgNumber" Type="nvarchar" MaxLength="4" Nullable="false" />
+    <Property Name="DateOfTest" Type="datetime" Nullable="false" />
+    <Property Name="DateOfExposure" Type="nvarchar" MaxLength="50" />
+    <Property Name="NumberOfExposed" Type="int" Nullable="false" />
+    <Property Name="Notes" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PathToFile" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Emergency_Leave">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone1" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone2" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Division/District" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OrgNumber" Type="nvarchar" MaxLength="4" Nullable="false" />
+    <Property Name="UnableToTelework" Type="bit" Nullable="false" />
+    <Property Name="CaringForMinor" Type="bit" Nullable="false" />
+    <Property Name="SpecialCircumstance" Type="bit" Nullable="false" />
+    <Property Name="Annual" Type="float" Nullable="false" />
+    <Property Name="PaidSick" Type="float" Nullable="false" />
+    <Property Name="EmergencyPaidSick" Type="float" Nullable="false" />
+    <Property Name="Unpaid" Type="float" Nullable="false" />
+    <Property Name="LeaveFrom" Type="datetime" Nullable="false" />
+    <Property Name="LeaveTo" Type="datetime" Nullable="false" />
+    <Property Name="PathToFile" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Family_Leave">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone1" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone2" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Division/District" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OrgNumber" Type="nvarchar" MaxLength="4" Nullable="false" />
+    <Property Name="QuarantineOrder" Type="bit" Nullable="false" />
+    <Property Name="AdviseToSelfQuarantine" Type="bit" Nullable="false" />
+    <Property Name="Symptoms" Type="bit" Nullable="false" />
+    <Property Name="CaringForPerson" Type="bit" Nullable="false" />
+    <Property Name="ChildCareUnavailable" Type="bit" Nullable="false" />
+    <Property Name="SimilarConditions" Type="bit" Nullable="false" />
+    <Property Name="Annual" Type="float" />
+    <Property Name="PaidSick" Type="float" />
+    <Property Name="EmergencyPaidSick" Type="float" />
+    <Property Name="Unpaid" Type="float" />
+    <Property Name="LeaveFrom" Type="datetime" Nullable="false" />
+    <Property Name="LeaveTo" Type="datetime" Nullable="false" />
+    <Property Name="PathToFile" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityContainer Name="Covid19ModelStoreContainer">
+    <EntitySet Name="Case_Log" EntityType="Self.Case_Log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Emergency_Leave" EntityType="Self.Emergency_Leave" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Family_Leave" EntityType="Self.Family_Leave" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,138 @@
+﻿@model CovidAppV5.Models.Emergency_Leave
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Emergency_Leave</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Division_District)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Division_District)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrgNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrgNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnableToTelework)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnableToTelework)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CaringForMinor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CaringForMinor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SpecialCircumstance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpecialCircumstance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Annual)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Annual)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaidSick)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaidSick)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmergencyPaidSick)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmergencyPaidSick)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Unpaid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Unpaid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeaveFrom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeaveFrom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeaveTo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LeaveTo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PathToFile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PathToFile)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

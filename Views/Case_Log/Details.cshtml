@@ -1,0 +1,98 @@
+﻿@model CovidAppV5.Models.Case_Log
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Case_Log</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Division_District)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Division_District)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrgNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrgNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfTest)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfTest)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfExposure)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfExposure)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfExposed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfExposed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PathToFile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PathToFile)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

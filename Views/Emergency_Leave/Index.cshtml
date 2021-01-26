@@ -1,0 +1,117 @@
+﻿@model IEnumerable<CovidAppV5.Models.Emergency_Leave>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Division_District)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrgNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnableToTelework)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CaringForMinor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SpecialCircumstance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Annual)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaidSick)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmergencyPaidSick)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Unpaid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LeaveFrom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LeaveTo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PathToFile)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Division_District)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrgNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnableToTelework)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CaringForMinor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SpecialCircumstance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Annual)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaidSick)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmergencyPaidSick)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Unpaid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LeaveFrom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LeaveTo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PathToFile)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

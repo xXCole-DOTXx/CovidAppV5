@@ -1,0 +1,87 @@
+﻿@model IEnumerable<CovidAppV5.Models.Case_Log>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Division_District)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrgNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfTest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfExposure)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOfExposed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PathToFile)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Division_District)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrgNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfTest)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfExposure)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfExposed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Notes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PathToFile)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
