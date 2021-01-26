@@ -30,7 +30,6 @@ C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\roslyn\System.IO.Comp
 C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\roslyn\System.IO.Compression.ZipFile.dll
 C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\roslyn\System.IO.FileSystem.dll
 C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\roslyn\System.IO.FileSystem.Primitives.dll
-C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\roslyn\System.Net.Http.dll
 C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\roslyn\System.Net.Sockets.dll
 C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\roslyn\System.Reflection.Metadata.dll
 C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
@@ -50,18 +49,6 @@ C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\roslyn\vbc.exe.config
 C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\roslyn\vbc.rsp
 C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\roslyn\VBCSCompiler.exe
 C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\Antlr3.Runtime.dll
-C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\Newtonsoft.Json.dll
-C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\System.Web.Helpers.dll
-C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\System.Web.Mvc.dll
-C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\System.Web.Optimization.dll
-C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\System.Web.Razor.dll
-C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\System.Web.WebPages.Deployment.dll
-C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\System.Web.WebPages.dll
-C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\System.Web.WebPages.Razor.dll
-C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\WebGrease.dll
 C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\System.Web.Helpers.xml
 C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\System.Web.Mvc.xml
 C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\System.Web.Optimization.xml
@@ -76,7 +63,6 @@ C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\obj\Debug\CovidAppV5.cspr
 C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\obj\Debug\CovidAppV5.csproj.CopyComplete
 C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\obj\Debug\CovidAppV5.dll
 C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\obj\Debug\CovidAppV5.pdb
-C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\EntityFramework.dll
-C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\EntityFramework.SqlServer.dll
 C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\EntityFramework.xml
 C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\EntityFramework.SqlServer.xml
+C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\obj\Debug\CovidAppV5.csprojAssemblyReference.cache
