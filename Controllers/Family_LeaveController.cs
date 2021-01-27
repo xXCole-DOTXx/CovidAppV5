@@ -59,6 +59,7 @@ namespace CovidAppV5.Controllers
             if (PostedFile != null)
             {
                 string fileName = Path.GetFileName(PostedFile.FileName);
+                family_Leave.PathToFile = fileName;
                 PostedFile.SaveAs(path + fileName);
                 ViewBag.Message += string.Format("<b>{0}</b> uploaded.<br />", fileName);
             }
