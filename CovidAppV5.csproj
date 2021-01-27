@@ -128,9 +128,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Case_Docs_Controller.cs" />
     <Compile Include="Controllers\Case_LogController.cs" />
     <Compile Include="Controllers\Emergency_LeaveController.cs" />
+    <Compile Include="Controllers\Emergency_Leave_Forms_Controller.cs" />
     <Compile Include="Controllers\Family_LeaveController.cs" />
+    <Compile Include="Controllers\Family_Leave_Forms_Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -275,6 +278,7 @@
     <Content Include="bin\roslyn\vbc.rsp" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <Content Include="Case_Log_Docs\DOP-L4A.pdf" />
+    <Content Include="Family_Leave_Docs\DOP-L4A.pdf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -315,6 +319,17 @@
     <Content Include="Views\Family_Leave\Details.cshtml" />
     <Content Include="Views\Family_Leave\Edit.cshtml" />
     <Content Include="Views\Family_Leave\Index.cshtml" />
+    <Content Include="Views\Case_Docs_\Create.cshtml" />
+    <Content Include="Views\Case_Docs_\Delete.cshtml" />
+    <Content Include="Views\Case_Docs_\Details.cshtml" />
+    <Content Include="Views\Case_Docs_\Edit.cshtml" />
+    <Content Include="Views\Case_Docs_\Index.cshtml" />
+    <Content Include="Views\Emergency_Leave_Forms_\Create.cshtml" />
+    <Content Include="Views\Emergency_Leave_Forms_\Delete.cshtml" />
+    <Content Include="Views\Emergency_Leave_Forms_\Details.cshtml" />
+    <Content Include="Views\Emergency_Leave_Forms_\Edit.cshtml" />
+    <Content Include="Views\Emergency_Leave_Forms_\Index.cshtml" />
+    <Content Include="Views\Family_Leave_Forms_\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
