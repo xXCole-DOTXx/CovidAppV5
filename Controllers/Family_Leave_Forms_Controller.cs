@@ -48,25 +48,26 @@ namespace CovidAppV5.Controllers
             }
         }
 
-        // GET: Family_Leave_Forms_/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
         // POST: Family_Leave_Forms_/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(string fileName)
         {
             try
             {
-                // TODO: Add delete logic here
+                string path = Server.MapPath("~/Family_Leave_Docs/");
+                string fullPath = path + fileName;
+                if (System.IO.File.Exists(fullPath))
+                {
+                    System.IO.File.Delete(fullPath);
+                }
 
-                return RedirectToAction("Index");
+                TempData["UserMessage"] = "Success!";
+                return RedirectToAction("Index", "Family_Leave_Forms_");
             }
             catch
             {
-                return View();
+                TempData["UserMessage"] = "Something went wrong... :-(";
+                return RedirectToAction("Family_Leave_Forms_");
             }
         }
     }
