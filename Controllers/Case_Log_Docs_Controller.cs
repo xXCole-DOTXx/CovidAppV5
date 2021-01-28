@@ -37,7 +37,8 @@ namespace CovidAppV5.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
+                // TODO: Figure out how to handle a list of files. It shouldnt be hard I have code that does it for 1.
+                //       should be able to just loop over the list.
 
                 return RedirectToAction("Index");
             }

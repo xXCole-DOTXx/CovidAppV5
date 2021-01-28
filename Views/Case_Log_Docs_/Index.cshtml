@@ -8,9 +8,13 @@
 }
 
 <h2>Case Log Documents</h2>
+
 @using (Html.BeginForm("Delete", "Case_Log_Docs_"))
 {
     <input type="hidden" id="fileName" name="fileName" />
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
 
     <table class="table">
         <tr>
