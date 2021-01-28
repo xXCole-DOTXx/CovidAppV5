@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 
@@ -14,12 +15,15 @@ namespace CovidAppV5.Controllers
         {
             string path = Server.MapPath("~/Family_Leave_Docs/");
             string[] fileEntries = Directory.GetFiles(path);
+            var docs = new List<string>();
             foreach (string fileName in fileEntries)
             {
-                System.Diagnostics.Debug.WriteLine(fileName);
+                string result = fileName.Substring(fileName.LastIndexOf(@"\") + 1);
+                docs.Add(result);
             }
-            ViewData["fileEntries"] = fileEntries;
-            return View(fileEntries);
+            string[] arrayOfDocs = docs.ToArray();
+            ViewData["arrayOfDocs"] = arrayOfDocs; //Must include the array using both methods
+            return View(arrayOfDocs);
         }
 
         // GET: Family_Leave_Forms_/Create

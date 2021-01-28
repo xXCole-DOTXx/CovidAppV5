@@ -128,10 +128,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\Case_Docs_Controller.cs" />
     <Compile Include="Controllers\Case_LogController.cs" />
     <Compile Include="Controllers\Emergency_LeaveController.cs" />
-    <Compile Include="Controllers\Emergency_Leave_Forms_Controller.cs" />
     <Compile Include="Controllers\Family_LeaveController.cs" />
     <Compile Include="Controllers\Family_Leave_Forms_Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -319,16 +317,6 @@
     <Content Include="Views\Family_Leave\Details.cshtml" />
     <Content Include="Views\Family_Leave\Edit.cshtml" />
     <Content Include="Views\Family_Leave\Index.cshtml" />
-    <Content Include="Views\Case_Docs_\Create.cshtml" />
-    <Content Include="Views\Case_Docs_\Delete.cshtml" />
-    <Content Include="Views\Case_Docs_\Details.cshtml" />
-    <Content Include="Views\Case_Docs_\Edit.cshtml" />
-    <Content Include="Views\Case_Docs_\Index.cshtml" />
-    <Content Include="Views\Emergency_Leave_Forms_\Create.cshtml" />
-    <Content Include="Views\Emergency_Leave_Forms_\Delete.cshtml" />
-    <Content Include="Views\Emergency_Leave_Forms_\Details.cshtml" />
-    <Content Include="Views\Emergency_Leave_Forms_\Edit.cshtml" />
-    <Content Include="Views\Emergency_Leave_Forms_\Index.cshtml" />
     <Content Include="Views\Family_Leave_Forms_\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

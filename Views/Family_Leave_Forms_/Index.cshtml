@@ -4,7 +4,7 @@
 }
 
 @{ 
-    var fileEntries = ViewData["fileEntries"] as string[];
+    var arrayOfDocs = ViewData["arrayOfDocs"] as string[];
  }
 
 <h2>Index</h2>
@@ -19,11 +19,11 @@
         <th></th>
     </tr>
 
-    @foreach (var item in fileEntries)
+    @foreach (var item in arrayOfDocs)
     {
         <tr>
             <td>
-                <a href="~/Family_Leave_Docs/@Html.DisplayFor(key => key)">@Html.DisplayFor(key => key)</a>
+                <a href="~/Family_Leave_Docs/@item">@item</a>
             </td>
         </tr>
     }
