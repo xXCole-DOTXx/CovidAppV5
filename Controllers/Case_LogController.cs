@@ -95,8 +95,17 @@ namespace CovidAppV5.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Phone1,Phone2,Division_District,OrgNumber,DateOfTest,DateOfExposure,NumberOfExposed,Notes,PathToFile")] Case_Log case_Log)
+        public ActionResult Edit([Bind(Include = "ID,Name,Phone1,Phone2,Division_District,OrgNumber,DateOfTest,DateOfExposure,NumberOfExposed,Notes,PathToFile")] Case_Log case_Log, HttpPostedFileBase PostedFile)
         {
+            if (PostedFile != null)
+            {
+                string path = Server.MapPath("~/Case_Log_Docs/");
+                string fileName = Path.GetFileName(PostedFile.FileName);
+                case_Log.PathToFile = fileName;
+                PostedFile.SaveAs(path + fileName);
+                ViewBag.Message += string.Format("<b>{0}</b> uploaded.<br />", fileName);
+            }
+
             if (ModelState.IsValid)
             {
                 db.Entry(case_Log).State = EntityState.Modified;

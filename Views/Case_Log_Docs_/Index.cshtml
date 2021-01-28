@@ -8,22 +8,36 @@
 }
 
 <h2>Case Log Documents</h2>
+@using (Html.BeginForm("Delete", "Case_Log_Docs_"))
+{
+    <input type="hidden" id="fileName" name="fileName" />
 
-<table class="table">
-    <tr>
-        <th>
-            Files
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in arrayOfDocs)
-    {
+    <table class="table">
         <tr>
-            <td>
-                <a href="~/Case_Log_Docs/@item">@item</a>
-            </td>
+            <th>
+                Files
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in arrayOfDocs)
+        {
+            <tr>
+                <td>
+                    <a href="~/Case_Log_Docs/@item">@item</a>
+                </td>
+                <td>
+                    <input type="submit" value="Delete File" onclick="document.getElementById('fileName').value = '@item';" />
+                </td>
+            </tr>
+        }
+
+
+    </table>
+
+}
+@{ var userMessage = TempData["UserMessage"] as string; }
+@if (!string.IsNullOrWhiteSpace(userMessage))
+{
+    <div class="some-message-style">@userMessage</div>
+}

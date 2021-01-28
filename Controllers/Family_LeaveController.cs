@@ -94,8 +94,17 @@ namespace CovidAppV5.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Phone1,Phone2,Division_District,OrgNumber,QuarantineOrder,AdviseToSelfQuarantine,Symptoms,CaringForPerson,ChildCareUnavailable,SimilarConditions,Annual,PaidSick,EmergencyPaidSick,Unpaid,LeaveFrom,LeaveTo,PathToFile")] Family_Leave family_Leave)
+        public ActionResult Edit([Bind(Include = "ID,Name,Phone1,Phone2,Division_District,OrgNumber,QuarantineOrder,AdviseToSelfQuarantine,Symptoms,CaringForPerson,ChildCareUnavailable,SimilarConditions,Annual,PaidSick,EmergencyPaidSick,Unpaid,LeaveFrom,LeaveTo,PathToFile")] Family_Leave family_Leave, HttpPostedFileBase PostedFile)
         {
+            if (PostedFile != null)
+            {
+                string path = Server.MapPath("~/Family_Leave_Docs/");
+                string fileName = Path.GetFileName(PostedFile.FileName);
+                family_Leave.PathToFile = fileName;
+                PostedFile.SaveAs(path + fileName);
+                ViewBag.Message += string.Format("<b>{0}</b> uploaded.<br />", fileName);
+            }
+
             if (ModelState.IsValid)
             {
                 db.Entry(family_Leave).State = EntityState.Modified;
