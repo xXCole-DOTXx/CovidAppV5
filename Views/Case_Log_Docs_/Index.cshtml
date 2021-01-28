@@ -3,13 +3,11 @@
     ViewBag.Title = "Index";
 }
 
-@{ 
+@{
     var arrayOfDocs = ViewData["arrayOfDocs"] as string[];
- }
+}
 
-<h2>Family Leave Documents</h2>
-
-
+<h2>Case Log Documents</h2>
 
 <table class="table">
     <tr>
@@ -23,11 +21,9 @@
     {
         <tr>
             <td>
-                <a href="~/Family_Leave_Docs/@item">@item</a>
+                <a href="~/Case_Log_Docs/@item">@item</a>
             </td>
         </tr>
     }
 
 </table>
-
-
