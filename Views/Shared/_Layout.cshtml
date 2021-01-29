@@ -11,7 +11,9 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a href="@Url.Action("Index", "Home")" title="List View" class="links">
+                    <img alt="List View" src="@Url.Content("~/Assets/WVDOT.png")" style="width:60px; height:60px; margin-right: 10px">
+                </a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -24,6 +26,9 @@
                             <li><a class="dropdown-item" href="~/Family_Leave_Forms_">Family Leave</a></li>
                         </ul>
                     </li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Reports", "Contact", "Home")</li>
                 </ul>
             </div>
         </div>
