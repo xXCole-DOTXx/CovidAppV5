@@ -33,12 +33,25 @@ namespace CovidAppV5.Controllers
 
         // POST: Case_Log_Docs_/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(FormCollection collection, HttpPostedFileBase PostedFile)
         {
             try
             {
                 // TODO: Figure out how to handle a list of files. It shouldnt be hard I have code that does it for 1.
                 //       should be able to just loop over the list.
+                string path = Server.MapPath("~/Case_Log_Docs/");
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                    System.Diagnostics.Debug.WriteLine("Created the folder.");
+                }
+
+                if (PostedFile != null)
+                {
+                    string fileName = Path.GetFileName(PostedFile.FileName);
+                    PostedFile.SaveAs(path + fileName);
+                    ViewBag.Message += string.Format("<b>{0}</b> uploaded.<br />", fileName);
+                }
 
                 return RedirectToAction("Index");
             }
