@@ -12,6 +12,9 @@
 @using (Html.BeginForm("Delete", "Family_Leave_Forms_"))
 {
     <input type="hidden" id="fileName" name="fileName" />
+    <p>
+        @Html.ActionLink("Upload file", "Create")
+    </p>
 
     <table class="table">
         <tr>
