@@ -33,11 +33,23 @@ namespace CovidAppV5.Controllers
 
         // POST: Emergency_Leave_Forms_/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(FormCollection collection, HttpPostedFileBase PostedFile)
         {
             try
             {
-                // TODO: Add insert logic here
+                string path = Server.MapPath("~/Emergency_Leave_Docs/");
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                    System.Diagnostics.Debug.WriteLine("Created the folder.");
+                }
+
+                if (PostedFile != null)
+                {
+                    string fileName = Path.GetFileName(PostedFile.FileName);
+                    PostedFile.SaveAs(path + fileName);
+                    ViewBag.Message += string.Format("<b>{0}</b> uploaded.<br />", fileName);
+                }
 
                 return RedirectToAction("Index");
             }

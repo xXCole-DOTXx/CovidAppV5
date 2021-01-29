@@ -323,6 +323,7 @@
     <Content Include="Views\Case_Log_Docs_\Index.cshtml" />
     <Content Include="Views\Emergency_Leave_Forms_\Index.cshtml" />
     <Content Include="Views\Case_Log_Docs_\Create.cshtml" />
+    <Content Include="Views\Emergency_Leave_Forms_\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

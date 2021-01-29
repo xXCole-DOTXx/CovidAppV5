@@ -12,6 +12,9 @@
 @using (Html.BeginForm("Delete", "Emergency_Leave_Forms_"))
 {
     <input type="hidden" id="fileName" name="fileName" />
+    <p>
+        @Html.ActionLink("Upload file", "Create")
+    </p>
 
     <table class="table">
         <tr>
@@ -23,14 +26,14 @@
 
         @foreach (var item in arrayOfDocs)
         {
-    <tr>
-        <td>
-            <a href="~/Emergency_Leave_Docs/@item">@item</a>
-        </td>
-        <td>
-            <input type="submit" value="Delete File" onclick="document.getElementById('fileName').value = '@item';" />
-        </td>
-    </tr>
+            <tr>
+                <td>
+                    <a href="~/Emergency_Leave_Docs/@item">@item</a>
+                </td>
+                <td>
+                    <input type="submit" value="Delete File" onclick="document.getElementById('fileName').value = '@item';" />
+                </td>
+            </tr>
         }
 
     </table>

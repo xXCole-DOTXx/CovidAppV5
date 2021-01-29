@@ -37,8 +37,6 @@ namespace CovidAppV5.Controllers
         {
             try
             {
-                // TODO: Figure out how to handle a list of files. It shouldnt be hard I have code that does it for 1.
-                //       should be able to just loop over the list.
                 string path = Server.MapPath("~/Case_Log_Docs/");
                 if (!Directory.Exists(path))
                 {
