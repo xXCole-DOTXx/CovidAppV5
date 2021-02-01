@@ -1,129 +1,147 @@
-﻿@model IEnumerable<CovidAppV5.Models.Family_Leave>
+﻿@model PagedList.IPagedList<CovidAppV5.Models.Family_Leave>
+
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Family Leave Forms</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Html.BeginForm("Index", "Family_Leave", FormMethod.Get))
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Phone1)
+            Phone 1
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Phone2)
+            Phone 2
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Division_District)
+            District/Division
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OrgNumber)
+            @Html.ActionLink("Organization Number", "Index", new { sortOrder = ViewBag.OrgSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.QuarantineOrder)
+            Quarantine Order
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AdviseToSelfQuarantine)
+            Advise to Self Quarantine
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Symptoms)
+            Symptoms
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CaringForPerson)
+            Caring for Person
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ChildCareUnavailable)
+            Childcare Unavailable
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SimilarConditions)
+            Similar Conditions
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Annual)
+            Annual
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PaidSick)
+            Paid Sick
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EmergencyPaidSick)
+            Emergency Paid Sick
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Unpaid)
+            Unpaid
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LeaveFrom)
+            Leave From
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LeaveTo)
+            Leave To
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Division_District)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrgNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.QuarantineOrder)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AdviseToSelfQuarantine)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Symptoms)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CaringForPerson)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChildCareUnavailable)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SimilarConditions)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Annual)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PaidSick)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmergencyPaidSick)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Unpaid)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LeaveFrom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LeaveTo)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Division_District)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrgNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuarantineOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdviseToSelfQuarantine)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Symptoms)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CaringForPerson)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChildCareUnavailable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SimilarConditions)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Annual)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaidSick)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmergencyPaidSick)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Unpaid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaveFrom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaveTo)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
 
 </table>
+<br />
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

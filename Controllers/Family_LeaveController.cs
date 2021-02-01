@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CovidAppV5.Models;
+using PagedList;
 
 namespace CovidAppV5.Controllers
 {
@@ -16,9 +17,48 @@ namespace CovidAppV5.Controllers
         private Covid19Entities db = new Covid19Entities();
 
         // GET: Family_Leave
-        public ActionResult Index()
+        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View(db.Family_Leave.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.OrgSortParm = sortOrder == "Org" ? "Org_desc" : "Org";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var fLeave = from s in db.Family_Leave
+                         select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                fLeave = fLeave.Where(s => s.Name.Contains(searchString)
+                                       || s.OrgNumber.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    fLeave = fLeave.OrderByDescending(s => s.Name);
+                    break;
+                case "Org":
+                    fLeave = fLeave.OrderBy(s => s.OrgNumber);
+                    break;
+                case "Org_desc":
+                    fLeave = fLeave.OrderByDescending(s => s.OrgNumber);
+                    break;
+                default:
+                    fLeave = fLeave.OrderBy(s => s.Name);
+                    break;
+            }
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(fLeave.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Family_Leave/Details/5
