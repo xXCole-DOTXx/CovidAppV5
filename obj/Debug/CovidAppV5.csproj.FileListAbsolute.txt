@@ -66,3 +66,7 @@ C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\obj\Debug\CovidAppV5.pdb
 C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\EntityFramework.xml
 C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\EntityFramework.SqlServer.xml
 C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\obj\Debug\CovidAppV5.csprojAssemblyReference.cache
+C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\PagedList.dll
+C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\PagedList.Mvc.dll
+C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\PagedList.xml
+C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\PagedList.Mvc.xml

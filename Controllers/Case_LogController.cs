@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CovidAppV5.Models;
+using PagedList;
 
 namespace CovidAppV5.Controllers
 {
@@ -16,10 +17,23 @@ namespace CovidAppV5.Controllers
         private Covid19Entities db = new Covid19Entities();
 
         // GET: Case_Log
-        public ViewResult Index(string sortOrder, string searchString)
+        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
+            ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.Phone1SortParm = sortOrder == "Phone1" ? "phone1_desc" : "Phone1";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
             var caseLog = from s in db.Case_Log
                            select s;
             if (!String.IsNullOrEmpty(searchString))
@@ -42,7 +56,9 @@ namespace CovidAppV5.Controllers
                     caseLog = caseLog.OrderBy(s => s.Name);
                     break;
             }
-            return View(caseLog.ToList());
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(caseLog.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Case_Log/Details/5
