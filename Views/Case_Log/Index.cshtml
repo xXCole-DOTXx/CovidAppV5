@@ -26,7 +26,7 @@
                 @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
             </th>
             <th>
-                @Html.ActionLink("Phone1", "Index", new { sortOrder = ViewBag.Phone1SortParm, currentFilter = ViewBag.CurrentFilter })
+                Phone 1
             </th>
             <th>
                 Phone 2
@@ -35,7 +35,7 @@
                 District/Division
             </th>
             <th>
-                Organization Number
+                @Html.ActionLink("Organization Number", "Index", new { sortOrder = ViewBag.OrgSortParm, currentFilter = ViewBag.CurrentFilter })
             </th>
             <th>
                 Date of test

@@ -21,7 +21,7 @@ namespace CovidAppV5.Controllers
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewBag.Phone1SortParm = sortOrder == "Phone1" ? "phone1_desc" : "Phone1";
+            ViewBag.OrgSortParm = sortOrder == "Org" ? "Org_desc" : "Org";
 
             if (searchString != null)
             {
@@ -39,18 +39,18 @@ namespace CovidAppV5.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 caseLog = caseLog.Where(s => s.Name.Contains(searchString)
-                                       || s.Phone1.Contains(searchString));
+                                       || s.OrgNumber.Contains(searchString));
             }
             switch (sortOrder)
             {
                 case "name_desc":
                     caseLog = caseLog.OrderByDescending(s => s.Name);
                     break;
-                case "Phone1":
-                    caseLog = caseLog.OrderBy(s => s.Phone1);
+                case "Org":
+                    caseLog = caseLog.OrderBy(s => s.OrgNumber);
                     break;
-                case "phone1_desc":
-                    caseLog = caseLog.OrderByDescending(s => s.Phone1);
+                case "Org_desc":
+                    caseLog = caseLog.OrderByDescending(s => s.OrgNumber);
                     break;
                 default:
                     caseLog = caseLog.OrderBy(s => s.Name);
