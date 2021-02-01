@@ -56,7 +56,7 @@ namespace CovidAppV5.Controllers
                     caseLog = caseLog.OrderBy(s => s.Name);
                     break;
             }
-            int pageSize = 5;
+            int pageSize = 10;
             int pageNumber = (page ?? 1);
             return View(caseLog.ToPagedList(pageNumber, pageSize));
         }
