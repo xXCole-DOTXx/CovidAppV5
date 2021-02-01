@@ -16,12 +16,17 @@ namespace CovidAppV5.Controllers
         private Covid19Entities db = new Covid19Entities();
 
         // GET: Case_Log
-        public ActionResult Index(string sortOrder)
+        public ViewResult Index(string sortOrder, string searchString)
         {
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.Phone1SortParm = sortOrder == "Phone1" ? "phone1_desc" : "Phone1";
             var caseLog = from s in db.Case_Log
                            select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                caseLog = caseLog.Where(s => s.Name.Contains(searchString)
+                                       || s.Phone1.Contains(searchString));
+            }
             switch (sortOrder)
             {
                 case "name_desc":
