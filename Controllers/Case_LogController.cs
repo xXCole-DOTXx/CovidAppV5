@@ -16,9 +16,28 @@ namespace CovidAppV5.Controllers
         private Covid19Entities db = new Covid19Entities();
 
         // GET: Case_Log
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder)
         {
-            return View(db.Case_Log.ToList());
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.Phone1SortParm = sortOrder == "Phone1" ? "phone1_desc" : "Phone1";
+            var caseLog = from s in db.Case_Log
+                           select s;
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    caseLog = caseLog.OrderByDescending(s => s.Name);
+                    break;
+                case "Phone1":
+                    caseLog = caseLog.OrderBy(s => s.Phone1);
+                    break;
+                case "phone1_desc":
+                    caseLog = caseLog.OrderByDescending(s => s.Phone1);
+                    break;
+                default:
+                    caseLog = caseLog.OrderBy(s => s.Name);
+                    break;
+            }
+            return View(caseLog.ToList());
         }
 
         // GET: Case_Log/Details/5
