@@ -104,7 +104,6 @@ namespace CovidAppV5.Controllers
                 ViewBag.Message += string.Format("<b>{0}</b> uploaded.<br />", fileName);
             }
 
-
             if (ModelState.IsValid)
             {
                 db.Case_Log.Add(case_Log);
@@ -176,6 +175,14 @@ namespace CovidAppV5.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Case_Log case_Log = db.Case_Log.Find(id);
+
+            string path = Server.MapPath("~/Case_Log_Docs/" + case_Log.PathToFile);
+            //If file is a .jpg
+            if (System.IO.File.Exists(path))
+            {
+                System.IO.File.Delete(path);
+            }
+
             db.Case_Log.Remove(case_Log);
             db.SaveChanges();
             return RedirectToAction("Index");
