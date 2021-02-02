@@ -136,6 +136,16 @@ namespace CovidAppV5.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Name,Phone1,Phone2,Division_District,OrgNumber,QuarantineOrder,AdviseToSelfQuarantine,Symptoms,CaringForPerson,ChildCareUnavailable,SimilarConditions,Annual,PaidSick,EmergencyPaidSick,Unpaid,LeaveFrom,LeaveTo,PathToFile")] Family_Leave family_Leave, HttpPostedFileBase PostedFile)
         {
+            var currentPath = "";
+            var currentPathQuery = from item in db.Family_Leave
+                                   where item.ID == family_Leave.ID
+                                   select item.PathToFile;
+
+            foreach (var q in currentPathQuery)
+            {
+                currentPath = q;
+            }
+
             if (PostedFile != null)
             {
                 string path = Server.MapPath("~/Family_Leave_Docs/");
@@ -143,6 +153,10 @@ namespace CovidAppV5.Controllers
                 family_Leave.PathToFile = fileName;
                 PostedFile.SaveAs(path + fileName);
                 ViewBag.Message += string.Format("<b>{0}</b> uploaded.<br />", fileName);
+            }
+            else
+            {
+                family_Leave.PathToFile = currentPath;
             }
 
             if (ModelState.IsValid)

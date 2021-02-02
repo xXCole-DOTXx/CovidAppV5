@@ -136,6 +136,16 @@ namespace CovidAppV5.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Name,Phone1,Phone2,Division_District,OrgNumber,UnableToTelework,CaringForMinor,SpecialCircumstance,Annual,PaidSick,EmergencyPaidSick,Unpaid,LeaveFrom,LeaveTo,PathToFile")] Emergency_Leave emergency_Leave, HttpPostedFileBase PostedFile)
         {
+            var currentPath = "";
+            var currentPathQuery = from item in db.Emergency_Leave
+                                   where item.ID == emergency_Leave.ID
+                                   select item.PathToFile;
+
+            foreach (var q in currentPathQuery)
+            {
+                currentPath = q;
+            }
+
             if (PostedFile != null)
             {
                 string path = Server.MapPath("~/Emergency_Leave_Docs/");
@@ -143,6 +153,10 @@ namespace CovidAppV5.Controllers
                 emergency_Leave.PathToFile = fileName;
                 PostedFile.SaveAs(path + fileName);
                 ViewBag.Message += string.Format("<b>{0}</b> uploaded.<br />", fileName);
+            }
+            else
+            {
+                emergency_Leave.PathToFile = currentPath;
             }
 
             if (ModelState.IsValid)
