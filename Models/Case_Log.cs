@@ -24,6 +24,7 @@ namespace CovidAppV5.Models
         [Column("Division/District")]
         public string Division_District { get; set; }
         public string OrgNumber { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         public System.DateTime DateOfTest { get; set; }
         public string DateOfExposure { get; set; }
         public int NumberOfExposed { get; set; }

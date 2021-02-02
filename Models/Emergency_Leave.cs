@@ -31,7 +31,9 @@ namespace CovidAppV5.Models
         public double PaidSick { get; set; }
         public double EmergencyPaidSick { get; set; }
         public double Unpaid { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         public System.DateTime LeaveFrom { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         public System.DateTime LeaveTo { get; set; }
         public string PathToFile { get; set; }
 

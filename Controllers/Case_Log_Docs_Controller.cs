@@ -21,6 +21,7 @@ namespace CovidAppV5.Controllers
                 docs.Add(result);
             }
             string[] arrayOfDocs = docs.ToArray();
+
             ViewData["arrayOfDocs"] = arrayOfDocs; //Must include the array using both methods
             return View(arrayOfDocs);
         }
