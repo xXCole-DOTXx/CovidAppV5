@@ -175,6 +175,14 @@ namespace CovidAppV5.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Emergency_Leave emergency_Leave = db.Emergency_Leave.Find(id);
+
+            string path = Server.MapPath("~/Emergency_Leave_Docs/" + emergency_Leave.PathToFile);
+            //If file is a .jpg
+            if (System.IO.File.Exists(path))
+            {
+                System.IO.File.Delete(path);
+            }
+
             db.Emergency_Leave.Remove(emergency_Leave);
             db.SaveChanges();
             return RedirectToAction("Index");
