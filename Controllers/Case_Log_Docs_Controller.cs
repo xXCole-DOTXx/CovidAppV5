@@ -10,20 +10,37 @@ namespace CovidAppV5.Controllers
     public class Case_Log_Docs_Controller : Controller
     {
         // GET: Case_Log_Docs_
-        public ActionResult Index()
+        public ActionResult Index(string currentFilter, string searchString)
         {
             string path = Server.MapPath("~/Case_Log_Docs/");
             string[] fileEntries = Directory.GetFiles(path);
             var docs = new List<string>();
-            foreach (string fileName in fileEntries)
-            {
-                string result = fileName.Substring(fileName.LastIndexOf(@"\") + 1);
-                docs.Add(result);
-            }
-            string[] arrayOfDocs = docs.ToArray();
 
-            ViewData["arrayOfDocs"] = arrayOfDocs; //Must include the array using both methods
-            return View(arrayOfDocs);
+            if (!String.IsNullOrEmpty(searchString)) //If there is a search string
+            {
+                foreach (string fileName in fileEntries)
+                {
+                    if (fileName.Contains(searchString))
+                    {
+                        string result = fileName.Substring(fileName.LastIndexOf(@"\") + 1);
+                        docs.Add(result);
+                    }
+                }
+                string[] arrayOfDocs = docs.ToArray();
+                ViewData["arrayOfDocs"] = arrayOfDocs; //Must include the array using both methods
+                return View(arrayOfDocs);
+            }
+            else //If there is not a search string
+            {
+                foreach (string fileName in fileEntries)
+                {
+                    string result = fileName.Substring(fileName.LastIndexOf(@"\") + 1);
+                    docs.Add(result);
+                }
+                string[] arrayOfDocs = docs.ToArray();
+                ViewData["arrayOfDocs"] = arrayOfDocs; //Must include the array using both methods
+                return View(arrayOfDocs);
+            } 
         }
 
         // GET: Case_Log_Docs_/Create
