@@ -175,6 +175,14 @@ namespace CovidAppV5.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Family_Leave family_Leave = db.Family_Leave.Find(id);
+
+            string path = Server.MapPath("~/Family_Leave_Docs/" + family_Leave.PathToFile);
+            //If file is a .jpg
+            if (System.IO.File.Exists(path))
+            {
+                System.IO.File.Delete(path);
+            }
+
             db.Family_Leave.Remove(family_Leave);
             db.SaveChanges();
             return RedirectToAction("Index");
