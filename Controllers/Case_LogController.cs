@@ -136,7 +136,15 @@ namespace CovidAppV5.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Name,Phone1,Phone2,Division_District,OrgNumber,DateOfTest,DateOfExposure,NumberOfExposed,Notes,PathToFile")] Case_Log case_Log, HttpPostedFileBase PostedFile)
         {
-            //How do I not edit the PathToFile when PostedFile = null?
+            var currentPath = "";
+            var currentPathQuery = from item in db.Case_Log
+                                       where item.ID == case_Log.ID
+                                       select item.PathToFile;
+
+            foreach(var q in currentPathQuery)
+            {
+                currentPath = q;
+            }
 
             if (PostedFile != null)
             {
@@ -144,6 +152,10 @@ namespace CovidAppV5.Controllers
                 string fileName = Path.GetFileName(PostedFile.FileName);
                 case_Log.PathToFile = fileName;
                 PostedFile.SaveAs(path + fileName);
+            }
+            else
+            {
+                case_Log.PathToFile = currentPath;
             }
 
             if (ModelState.IsValid)
