@@ -9,6 +9,14 @@
 
 <h2>Emergency Leave Documents</h2>
 
+@using (Html.BeginForm("Index", "Emergency_Leave_Forms_", FormMethod.Get))
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+}
+
 @using (Html.BeginForm("Delete", "Emergency_Leave_Forms_"))
 {
     <input type="hidden" id="fileName" name="fileName" />
@@ -43,4 +51,7 @@
 {
     <div class="some-message-style">@userMessage</div>
 }
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
 
