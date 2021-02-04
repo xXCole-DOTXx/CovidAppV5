@@ -272,8 +272,6 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
-    <Content Include="Emergency_Leave_Docs\Blank COVID-19-Questionnaire2.pdf" />
-    <Content Include="Emergency_Leave_Docs\DOP-L4A.pdf" />
     <Content Include="bin\CovidAppV5.dll.config" />
     <Content Include="bin\roslyn\csc.exe.config" />
     <Content Include="bin\roslyn\csc.rsp" />
@@ -285,8 +283,6 @@
     <Content Include="bin\roslyn\vbc.exe.config" />
     <Content Include="bin\roslyn\vbc.rsp" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
-    <Content Include="Case_Log_Docs\DOP-L4A.pdf" />
-    <Content Include="Family_Leave_Docs\DOP-L4A.pdf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -335,6 +331,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Case_Log_Docs\" />
+    <Folder Include="Emergency_Leave_Docs\" />
+    <Folder Include="Family_Leave_Docs\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
