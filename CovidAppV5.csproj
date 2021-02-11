@@ -142,6 +142,7 @@
     <Compile Include="Controllers\Family_LeaveController.cs" />
     <Compile Include="Controllers\Family_Leave_Forms_Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -170,6 +171,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\COVIDvm.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
@@ -328,6 +330,7 @@
     <Content Include="Views\Case_Log_Docs_\Create.cshtml" />
     <Content Include="Views\Emergency_Leave_Forms_\Create.cshtml" />
     <Content Include="Views\Family_Leave_Forms_\Create.cshtml" />
+    <Content Include="Views\Report\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
