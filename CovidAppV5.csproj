@@ -331,6 +331,7 @@
     <Content Include="Views\Emergency_Leave_Forms_\Create.cshtml" />
     <Content Include="Views\Family_Leave_Forms_\Create.cshtml" />
     <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\Report\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
