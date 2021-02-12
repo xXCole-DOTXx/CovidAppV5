@@ -22,7 +22,7 @@ namespace CovidAppV5.Controllers
             var covidQuery = (from form in db.Case_Log
                               where form.Name == "Cole"
                               join eForm in db.Emergency_Leave on form.Name equals eForm.Name
-                              select new {form.Name, form.Phone1, form.Phone2, eForm.OrgNumber, eForm.Annual, eForm.PaidSick}).ToList();
+                              select new {form.Name, form.Phone1, form.Phone2, eForm.OrgNumber, eForm.UnableToTelework, eForm.CaringForMinor}).ToList();
            // select form).ToList();
 
             foreach (var item in covidQuery)
@@ -32,8 +32,8 @@ namespace CovidAppV5.Controllers
                 objcvm.Phone1 = item.Phone1;
                 objcvm.Phone2 = item.Phone2;
                 objcvm.OrgNumber = item.OrgNumber;
-                objcvm.Division_District = item.Annual.ToString();
-                objcvm.OrgNumber = item.PaidSick.ToString();
+                objcvm.UnableToTelework = item.UnableToTelework;
+                objcvm.CaringForMinor = item.CaringForMinor;
                 VMlist.Add(objcvm);
             }
             return View(VMlist);
