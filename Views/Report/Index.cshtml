@@ -4,50 +4,53 @@
 @{
     ViewBag.Title = "Index";
 }
-    <meta name="viewport" content="width=device-width" />
+<meta name="viewport" content="width=device-width" />
 
-    <h2>Report</h2>
+<h2>Report</h2>
 
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Phone1)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OrgNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UnableToTelework)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CaringForMinor)
-            </th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
+<table class="table" id="resultTable">
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrgNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UnableToTelework)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CaringForMinor)
-        </td>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrgNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnableToTelework)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CaringForMinor)
+        </th>
     </tr>
-        }
-    </table>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrgNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnableToTelework)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CaringForMinor)
+            </td>
+        </tr>
+    }
+</table>
+
+<asp:GridView ID="GridView1" DataSourceID="" AutoGenerateColumns="true" runat="server">
+</asp:GridView>
 
 
 

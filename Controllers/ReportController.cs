@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using CovidAppV5.Models;
 using CovidAppV5.ViewModel;
+using System.Web.UI.WebControls;
 
 namespace CovidAppV5.Controllers
 {
@@ -16,15 +17,17 @@ namespace CovidAppV5.Controllers
     {
         private Covid19Entities db = new Covid19Entities();
         // GET: Report
-        public ActionResult Index(string Name)
+        public ActionResult Index(string Name, string Phone1)
         {
-            List<COVIDvm> VMlist = new List<COVIDvm>(); // to hold list of forms
+            //System.Diagnostics.Debug.WriteLine(Phone1);
 
+            List<COVIDvm> VMlist = new List<COVIDvm>(); // to hold list of forms
 
             var covidQuery = (from form in db.Case_Log
                               where form.Name == Name
                               join eForm in db.Emergency_Leave on form.Name equals eForm.Name
                               select new {form.Name, form.Phone1, eForm.OrgNumber, eForm.UnableToTelework, eForm.CaringForMinor}).ToList();
+         
 
             foreach (var item in covidQuery)
             {
