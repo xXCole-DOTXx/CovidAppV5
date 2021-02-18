@@ -39,7 +39,9 @@ namespace CovidAppV5.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 caseLog = caseLog.Where(s => s.Name.Contains(searchString)
-                                       || s.OrgNumber.Contains(searchString));
+                                       || s.OrgNumber.Contains(searchString)
+                                       || s.Division_District.Contains(searchString)
+                                       || s.DateOfExposure.Contains(searchString));
             }
             switch (sortOrder)
             {
