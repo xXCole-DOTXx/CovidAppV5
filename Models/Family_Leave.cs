@@ -21,7 +21,6 @@ namespace CovidAppV5.Models
         public string Name { get; set; }
         public string Phone1 { get; set; }
         public string Phone2 { get; set; }
-        [Column("Division/District")]
         public string Division_District { get; set; }
         public string OrgNumber { get; set; }
         public bool QuarantineOrder { get; set; }
@@ -34,14 +33,12 @@ namespace CovidAppV5.Models
         public Nullable<double> PaidSick { get; set; }
         public Nullable<double> EmergencyPaidSick { get; set; }
         public Nullable<double> Unpaid { get; set; }
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
-        public System.DateTime LeaveFrom { get; set; }
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
-        public System.DateTime LeaveTo { get; set; }
+        public Nullable<System.DateTime> LeaveFrom { get; set; }
+        public Nullable<System.DateTime> LeaveTo { get; set; }
         public string PathToFile { get; set; }
 
         [NotMapped]
-        [RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.pdf|.doc)$", ErrorMessage = "Only Image files allowed.")]
+        [RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.pdf|.doc)$", ErrorMessage = "That file type is no allowed.")]
         public HttpPostedFileBase PostedFile { get; set; }
     }
 }
