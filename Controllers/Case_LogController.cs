@@ -92,8 +92,7 @@ namespace CovidAppV5.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Name,Phone1,Phone2,Division_District,OrgNumber,DateOfTest,DateOfExposure,NumberOfExposed,Notes,PathToFile")] Case_Log case_Log, HttpPostedFileBase PostedFile)
         {
-            System.Diagnostics.Debug.AutoFlush = true;
-            System.Diagnostics.Debug.WriteLine("Testing printing");
+            Console.WriteLine("Testing print");
             string path = Server.MapPath("~/Case_Log_Docs/");
             if (!Directory.Exists(path))
             {
@@ -111,25 +110,8 @@ namespace CovidAppV5.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    db.Case_Log.Add(case_Log);
-                    db.SaveChanges();
-                    System.Diagnostics.Debug.WriteLine("The save worked.");
-                }
-                catch (DbEntityValidationException ex)
-                {
-                    System.Diagnostics.Debug.WriteLine("Catch initiated.");
-                    foreach (var errors in ex.EntityValidationErrors)
-                    {
-                        foreach (var validationError in errors.ValidationErrors)
-                        {
-                            // get the error message 
-                            string errorMessage = validationError.ErrorMessage;
-                            System.Diagnostics.Debug.WriteLine(errorMessage);
-                        }
-                    }
-                }
+                db.Case_Log.Add(case_Log);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 

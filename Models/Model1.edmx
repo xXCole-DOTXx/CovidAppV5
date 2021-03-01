@@ -19,7 +19,7 @@
           <Property Name="DateOfExposure" Type="nvarchar" MaxLength="50" />
           <Property Name="NumberOfExposed" Type="nvarchar" MaxLength="50" />
           <Property Name="Notes" Type="nvarchar(max)" />
-          <Property Name="PathToFile" Type="nvarchar" MaxLength="1" />
+          <Property Name="PathToFile" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Emergency_Leave">
           <Key>
@@ -89,7 +89,7 @@
           <Property Name="DateOfExposure" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NumberOfExposed" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PathToFile" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="PathToFile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Emergency_Leave">
           <Key>

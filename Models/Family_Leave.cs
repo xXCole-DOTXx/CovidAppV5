@@ -36,7 +36,6 @@ namespace CovidAppV5.Models
         public Nullable<System.DateTime> LeaveFrom { get; set; }
         public Nullable<System.DateTime> LeaveTo { get; set; }
         public string PathToFile { get; set; }
-
         [NotMapped]
         [RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.pdf|.doc)$", ErrorMessage = "That file type is no allowed.")]
         public HttpPostedFileBase PostedFile { get; set; }
