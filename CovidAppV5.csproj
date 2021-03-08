@@ -144,6 +144,7 @@
     <Compile Include="Controllers\Family_LeaveController.cs" />
     <Compile Include="Controllers\Family_Leave_Forms_Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NegativeController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -323,12 +324,15 @@
     <Content Include="Views\Report\Index.cshtml" />
     <Content Include="Views\Report\Create.cshtml" />
     <Content Include="Views\Report\ReportPage.cshtml" />
+    <Content Include="Views\Negative\Index.cshtml" />
+    <Content Include="Views\Negative\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Case_Log_Docs\" />
     <Folder Include="Emergency_Leave_Docs\" />
     <Folder Include="Family_Leave_Docs\" />
+    <Folder Include="Negative_Docs\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

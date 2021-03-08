@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@{
+    var arrayOfDocs = ViewData["arrayOfDocs"] as string[];
+}
+
+<h2>Negative Questionnaires</h2>
+
+@using (Html.BeginForm("Index", "Negative", FormMethod.Get))
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+}
+
+@using (Html.BeginForm("Delete", "Negative"))
+{
+    <input type="hidden" id="fileName" name="fileName" />
+    <p>
+        @Html.ActionLink("Upload file", "Create")
+    </p>
+
+    <table class="table">
+        <tr>
+            <th>
+                Files
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in arrayOfDocs)
+        {
+            <tr>
+                <td>
+                    <a href="~/Negative_Docs/@item">@item</a>
+                </td>
+                <td>
+                    <input type="submit" value="Delete File" onclick="document.getElementById('fileName').value = '@item';" />
+                </td>
+            </tr>
+        }
+
+
+    </table>
+
+}
+@{ var userMessage = TempData["UserMessage"] as string; }
+@if (!string.IsNullOrWhiteSpace(userMessage))
+{
+    <div class="some-message-style">@userMessage</div>
+}
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
