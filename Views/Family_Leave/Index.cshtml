@@ -16,7 +16,10 @@
 @using (Html.BeginForm("Index", "Family_Leave", FormMethod.Get))
 {
     <p>
-        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        Find by name, org number, or district/division:
+    </p>
+    <p>
+        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
         <input type="submit" value="Search" />
     </p>
 }
@@ -33,7 +36,7 @@
             Phone 2
         </th>
         <th>
-            District/Division
+            @Html.ActionLink("Division/District", "Index", new { sortOrder = ViewBag.DivSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
             @Html.ActionLink("Organization Number", "Index", new { sortOrder = ViewBag.OrgSortParm, currentFilter = ViewBag.CurrentFilter })

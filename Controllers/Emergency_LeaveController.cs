@@ -22,6 +22,7 @@ namespace CovidAppV5.Controllers
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.OrgSortParm = sortOrder == "Org" ? "Org_desc" : "Org";
+            ViewBag.DivSortParm = sortOrder == "Div" ? "Div_desc" : "Div";
 
             if (searchString != null)
             {
@@ -39,7 +40,8 @@ namespace CovidAppV5.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 eLeave = eLeave.Where(s => s.Name.Contains(searchString)
-                                       || s.OrgNumber.Contains(searchString));
+                                       || s.OrgNumber.Contains(searchString)
+                                       || s.Division_District.Contains(searchString));
             }
             switch (sortOrder)
             {
@@ -51,6 +53,12 @@ namespace CovidAppV5.Controllers
                     break;
                 case "Org_desc":
                     eLeave = eLeave.OrderByDescending(s => s.OrgNumber);
+                    break;
+                case "Div":
+                    eLeave = eLeave.OrderBy(s => s.Division_District);
+                    break;
+                case "Div_desc":
+                    eLeave = eLeave.OrderByDescending(s => s.Division_District);
                     break;
                 default:
                     eLeave = eLeave.OrderBy(s => s.Name);

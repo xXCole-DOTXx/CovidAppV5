@@ -15,10 +15,13 @@
 
     @using (Html.BeginForm("Index", "Case_Log", FormMethod.Get))
     {
-        <p>
-            Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
-            <input type="submit" value="Search" />
-        </p>
+    <p>
+        Find by name, org number, district/division, or date of exposure:
+    </p>
+    <p> 
+        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
     }
     <table class="table">
         <tr>
@@ -26,13 +29,10 @@
                 @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
             </th>
             <th>
-                Phone 1
+                Phone Number
             </th>
             <th>
-                Phone 2
-            </th>
-            <th>
-                District/Division
+                @Html.ActionLink("District/Division", "Index", new { sortOrder = ViewBag.DivSortParm, currentFilter = ViewBag.CurrentFilter })
             </th>
             <th>
                 @Html.ActionLink("Organization Number", "Index", new { sortOrder = ViewBag.OrgSortParm, currentFilter = ViewBag.CurrentFilter })
@@ -60,9 +60,6 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Phone1)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Phone2)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Division_District)

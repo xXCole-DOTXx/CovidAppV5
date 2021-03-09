@@ -23,6 +23,7 @@ namespace CovidAppV5.Controllers
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.OrgSortParm = sortOrder == "Org" ? "Org_desc" : "Org";
+            ViewBag.DivSortParm = sortOrder == "Div" ? "Div_desc" : "Div";
 
             if (searchString != null)
             {
@@ -54,6 +55,12 @@ namespace CovidAppV5.Controllers
                     break;
                 case "Org_desc":
                     caseLog = caseLog.OrderByDescending(s => s.OrgNumber);
+                    break;
+                case "Div":
+                    caseLog = caseLog.OrderBy(s => s.Division_District);
+                    break;
+                case "Div_desc":
+                    caseLog = caseLog.OrderByDescending(s => s.Division_District);
                     break;
                 default:
                     caseLog = caseLog.OrderBy(s => s.Name);
