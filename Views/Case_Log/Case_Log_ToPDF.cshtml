@@ -1,0 +1,44 @@
+﻿@model  CovidAppV5.Models.Case_Log
+
+@{
+    ViewBag.Title = "Case_Log_ToPDF";
+}
+
+<div>
+    <h4>Case Logs</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Division_District)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrgNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfTest)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfExposure)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfExposed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+    </dl>
+</div> 

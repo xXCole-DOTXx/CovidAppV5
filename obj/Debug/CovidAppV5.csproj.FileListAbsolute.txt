@@ -58,3 +58,4 @@ C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\PagedList.Mvc.dll
 C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\PagedList.xml
 C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\PagedList.Mvc.xml
 C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\obj\Debug\CovidAppV5.csprojAssemblyReference.cache
+C:\Users\e096752\Documents\Cole's Git Repos\CovidAppV5\bin\Rotativa.dll

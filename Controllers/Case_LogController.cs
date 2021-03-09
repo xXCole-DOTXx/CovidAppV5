@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Mvc;
 using CovidAppV5.Models;
 using PagedList;
+using Rotativa;
 
 namespace CovidAppV5.Controllers
 {
@@ -70,6 +71,24 @@ namespace CovidAppV5.Controllers
             int pageNumber = (page ?? 1);
             return View(caseLog.ToPagedList(pageNumber, pageSize));
         }
+        public ActionResult PrintViewToPdf()
+        {
+            var report = new ActionAsPdf("Index");
+            return report;
+        }
+        public ActionResult PrintPartialViewToPdf(int id)
+        {
+            System.Diagnostics.Debug.WriteLine("This is the id that it was passed: " + id);
+            using (Covid19Entities db = new Covid19Entities())
+            {
+                Case_Log log = db.Case_Log.FirstOrDefault(c => c.ID == id);
+
+                var report = new PartialViewAsPdf("~/Views/Case_Log/Case_Log_ToPDF.cshtml", log);
+                return report;
+            }
+
+        }
+
 
         // GET: Case_Log/Details/5
         public ActionResult Details(int? id)
