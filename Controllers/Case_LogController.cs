@@ -76,6 +76,8 @@ namespace CovidAppV5.Controllers
             var report = new ActionAsPdf("Index");
             return report;
         }
+
+
         public ActionResult PrintPartialViewToPdf(int id)
         {
             System.Diagnostics.Debug.WriteLine("This is the id that it was passed: " + id);
