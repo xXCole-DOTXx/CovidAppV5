@@ -334,7 +334,7 @@
     <Content Include="Views\Report\ReportPage.cshtml" />
     <Content Include="Views\Negative\Index.cshtml" />
     <Content Include="Views\Negative\Create.cshtml" />
-    <Content Include="Views\Case_Log\Case_Log_ToPDF.cshtml" />
+    <Content Include="Views\Case_Log\pdfIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

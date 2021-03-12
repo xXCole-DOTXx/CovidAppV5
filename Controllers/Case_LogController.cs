@@ -19,7 +19,7 @@ namespace CovidAppV5.Controllers
         private Covid19Entities db = new Covid19Entities();
 
         // GET: Case_Log
-        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
@@ -39,6 +39,7 @@ namespace CovidAppV5.Controllers
 
             var caseLog = from s in db.Case_Log
                            select s;
+
             if (!String.IsNullOrEmpty(searchString))
             {
                 caseLog = caseLog.Where(s => s.Name.Contains(searchString)
@@ -71,9 +72,19 @@ namespace CovidAppV5.Controllers
             int pageNumber = (page ?? 1);
             return View(caseLog.ToPagedList(pageNumber, pageSize));
         }
+
+        public ActionResult pdfIndex()
+        {
+            var caseLog = from s in db.Case_Log
+                          select s;
+            return View(caseLog);
+        }
+
+
+
         public ActionResult PrintViewToPdf()
         {
-            var report = new ActionAsPdf("Index");
+            var report = new ActionAsPdf("pdfIndex");
             return report;
         }
 
