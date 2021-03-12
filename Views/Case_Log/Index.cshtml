@@ -14,7 +14,11 @@
     </p>
 
     <p>
-        @Html.ActionLink("Convert View To PDF", "PrintViewToPdf")
+        @Html.ActionLink("Convert View To PDF", "pdfIndex", "Case_Log", new
+   {                                                     // routeValues
+       searchString = ViewBag.CurrentFilter
+   },
+    null)
     </p>
 
     @using (Html.BeginForm("Index", "Case_Log", FormMethod.Get))
@@ -27,6 +31,13 @@
         <input type="submit" value="Search" />
     </p>
     }
+
+    @using (Html.BeginForm("pdfIndex", "Case_Log", FormMethod.Get))
+    {
+
+    }
+
+
     <table class="table">
         <tr>
             <th>

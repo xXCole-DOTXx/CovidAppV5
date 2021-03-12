@@ -73,10 +73,20 @@ namespace CovidAppV5.Controllers
             return View(caseLog.ToPagedList(pageNumber, pageSize));
         }
 
-        public ActionResult pdfIndex()
+        public ActionResult pdfIndex(string searchString)
         {
+            System.Diagnostics.Debug.WriteLine("The search string was: " + searchString);
             var caseLog = from s in db.Case_Log
                           select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                caseLog = caseLog.Where(s => s.Name.Contains(searchString)
+                                       || s.OrgNumber.Contains(searchString)
+                                       || s.Division_District.Contains(searchString)
+                                       || s.DateOfExposure.Contains(searchString));
+            }
+
             return View(caseLog);
         }
 
