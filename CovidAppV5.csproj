@@ -335,6 +335,8 @@
     <Content Include="Views\Negative\Index.cshtml" />
     <Content Include="Views\Negative\Create.cshtml" />
     <Content Include="Views\Case_Log\pdfIndex.cshtml" />
+    <Content Include="Views\Emergency_Leave\pdfIndex.cshtml" />
+    <Content Include="Views\Family_Leave\pdfIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using CovidAppV5.Models;
 using PagedList;
+using Rotativa;
 
 namespace CovidAppV5.Controllers
 {
@@ -67,6 +68,58 @@ namespace CovidAppV5.Controllers
             int pageSize = 10;
             int pageNumber = (page ?? 1);
             return View(fLeave.ToPagedList(pageNumber, pageSize));
+        }
+
+        public ActionResult pdfIndex(string searchString, string currentFilter, string sortOrder, string sort)
+        {
+            System.Diagnostics.Debug.WriteLine("The sort string was: " + searchString);
+            System.Diagnostics.Debug.WriteLine("The search string was: " + sort);
+            ViewBag.CurrentFilter = searchString;
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.OrgSortParm = sortOrder == "Org" ? "Org_desc" : "Org";
+            ViewBag.DivSortParm = sortOrder == "Div" ? "Div_desc" : "Div";
+
+            var fLeave = from s in db.Family_Leave
+                         select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                fLeave = fLeave.Where(s => s.Name.Contains(searchString)
+                                       || s.OrgNumber.Contains(searchString)
+                                       || s.Division_District.Contains(searchString));
+            }
+
+            switch (sort)
+            {
+                case "name_desc":
+                    fLeave = fLeave.OrderByDescending(s => s.Name);
+                    break;
+                case "Org":
+                    fLeave = fLeave.OrderBy(s => s.OrgNumber);
+                    break;
+                case "Org_desc":
+                    fLeave = fLeave.OrderByDescending(s => s.OrgNumber);
+                    break;
+                case "Div":
+                    fLeave = fLeave.OrderBy(s => s.Division_District);
+                    break;
+                case "Div_desc":
+                    fLeave = fLeave.OrderByDescending(s => s.Division_District);
+                    break;
+                default:
+                    fLeave = fLeave.OrderBy(s => s.Name);
+                    break;
+            }
+
+
+            return View(fLeave);
+        }
+
+        public ActionResult PrintViewToPdf()
+        {
+            var report = new ActionAsPdf("pdfIndex");
+            return report;
         }
 
         // GET: Family_Leave/Details/5

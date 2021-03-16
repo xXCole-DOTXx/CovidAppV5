@@ -1,0 +1,108 @@
+﻿@model IEnumerable<CovidAppV5.Models.Emergency_Leave>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>FFCRA - Emergency FMLA Forms</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Phone 1
+        </th>
+        <th>
+            Phone 2
+        </th>
+        <th>
+           Division/District
+        </th>
+        <th>
+           Organization Number
+        </th>
+        <th>
+            Unable to telework
+        </th>
+        <th>
+            Caring for minor
+        </th>
+        <th>
+            Special Circumstances
+        </th>
+        <th>
+            Annual
+        </th>
+        <th>
+            Paid Sick
+        </th>
+        <th>
+            Emergency Paid Sick
+        </th>
+        <th>
+            Unpaid
+        </th>
+        <th>
+            Leave From
+        </th>
+        <th>
+            Leave To
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Phone1)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Phone2)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Division_District)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OrgNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.UnableToTelework)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CaringForMinor)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SpecialCircumstance)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Annual)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PaidSick)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EmergencyPaidSick)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Unpaid)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LeaveFrom)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LeaveTo)
+    </td>
+</tr>
+    }
+
+</table>
+
+<script>
+    window.print();
+</script>

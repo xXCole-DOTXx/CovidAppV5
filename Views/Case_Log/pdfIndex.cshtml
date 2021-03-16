@@ -10,16 +10,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Name", "pdfIndex", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+            Name
         </th>
         <th>
             Phone Number
         </th>
         <th>
-            @Html.ActionLink("District/Division", "pdfIndex", new { sortOrder = ViewBag.DivSortParm, currentFilter = ViewBag.CurrentFilter })
+            District/Division
         </th>
         <th>
-            @Html.ActionLink("Organization Number", "pdfIndex", new { sortOrder = ViewBag.OrgSortParm, currentFilter = ViewBag.CurrentFilter })
+            Organization Number
         </th>
         <th>
             Date of test
@@ -68,3 +68,6 @@
 
 </table>
 
+<script>
+    window.print();
+</script>

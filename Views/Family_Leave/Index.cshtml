@@ -13,6 +13,16 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
+<p>
+    @Html.ActionLink("Convert View To PDF", "pdfIndex", "Family_Leave",
+  new
+       {// routeValues
+    searchString = ViewBag.CurrentFilter,
+    sort = ViewBag.CurrentSort
+      },
+null)
+</p>
+
 @using (Html.BeginForm("Index", "Family_Leave", FormMethod.Get))
 {
     <p>

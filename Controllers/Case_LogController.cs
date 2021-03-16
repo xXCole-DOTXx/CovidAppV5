@@ -126,21 +126,6 @@ namespace CovidAppV5.Controllers
             return report;
         }
 
-
-        public ActionResult PrintPartialViewToPdf(int id)
-        {
-            System.Diagnostics.Debug.WriteLine("This is the id that it was passed: " + id);
-            using (Covid19Entities db = new Covid19Entities())
-            {
-                Case_Log log = db.Case_Log.FirstOrDefault(c => c.ID == id);
-
-                var report = new PartialViewAsPdf("~/Views/Case_Log/Case_Log_ToPDF.cshtml", log);
-                return report;
-            }
-
-        }
-
-
         // GET: Case_Log/Details/5
         public ActionResult Details(int? id)
         {
