@@ -14,10 +14,11 @@
     </p>
 
     <p>
-        @Html.ActionLink("Convert View To PDF", "pdfIndex", "Case_Log", new
-   {                                                     // routeValues
-       searchString = ViewBag.CurrentFilter
-   },
+        @Html.ActionLink("Convert View To PDF", "pdfIndex", "Case_Log", 
+      new {                                                     // routeValues
+        searchString = ViewBag.CurrentFilter,
+        sort = ViewBag.CurrentSort
+          },
     null)
     </p>
 
