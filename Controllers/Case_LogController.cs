@@ -19,7 +19,7 @@ namespace CovidAppV5.Controllers
         private Covid19Entities db = new Covid19Entities();
 
         // GET: Case_Log
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page, string dateOfExposureFrom, string dateOfExposureTo)
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
@@ -44,9 +44,9 @@ namespace CovidAppV5.Controllers
             {
                 caseLog = caseLog.Where(s => s.Name.Contains(searchString)
                                        || s.OrgNumber.Contains(searchString)
-                                       || s.Division_District.Contains(searchString)
-                                       || s.DateOfExposure.Contains(searchString));
+                                       || s.Division_District.Contains(searchString));
             }
+
             switch (sortOrder)
             {
                 case "name_desc":
