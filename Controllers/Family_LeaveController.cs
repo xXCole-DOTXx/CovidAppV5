@@ -67,6 +67,7 @@ namespace CovidAppV5.Controllers
             }
             int pageSize = 10;
             int pageNumber = (page ?? 1);
+            ViewBag.resultCount = fLeave.Count();
             return View(fLeave.ToPagedList(pageNumber, pageSize));
         }
 
@@ -112,7 +113,7 @@ namespace CovidAppV5.Controllers
                     break;
             }
 
-
+            ViewBag.resultCount = fLeave.Count();
             return View(fLeave);
         }
 
