@@ -10,11 +10,11 @@
     <Property Name="Phone2" Type="nvarchar" MaxLength="50" />
     <Property Name="Division/District" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="OrgNumber" Type="nvarchar" MaxLength="4" />
-    <Property Name="DateOfTest" Type="nvarchar" MaxLength="50" />
-    <Property Name="DateOfExposure" Type="nvarchar" MaxLength="50" />
+    <Property Name="DateOfTest" Type="datetime" />
+    <Property Name="DateOfExposure" Type="datetime" />
     <Property Name="NumberOfExposed" Type="nvarchar" MaxLength="50" />
     <Property Name="Notes" Type="nvarchar(max)" />
-    <Property Name="PathToFile" Type="nvarchar" MaxLength="50" />
+    <Property Name="PathToFile" Type="nvarchar" MaxLength="1" />
   </EntityType>
   <EntityType Name="Emergency_Leave">
     <Key>

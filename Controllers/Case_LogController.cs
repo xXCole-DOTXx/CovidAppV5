@@ -91,8 +91,7 @@ namespace CovidAppV5.Controllers
             {
                 caseLog = caseLog.Where(s => s.Name.Contains(searchString)
                                        || s.OrgNumber.Contains(searchString)
-                                       || s.Division_District.Contains(searchString)
-                                       || s.DateOfExposure.Contains(searchString));
+                                       || s.Division_District.Contains(searchString));
             }
 
             switch (sort)
