@@ -19,12 +19,15 @@ namespace CovidAppV5.Controllers
         private Covid19Entities db = new Covid19Entities();
 
         // GET: Case_Log
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page, string dateOfExposureFrom, string dateOfExposureTo)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page, string ExpDateFrom, string ExpDateTo)
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.OrgSortParm = sortOrder == "Org" ? "Org_desc" : "Org";
             ViewBag.DivSortParm = sortOrder == "Div" ? "Div_desc" : "Div";
+            DateTime fromDate, toDate;
+
+            System.Diagnostics.Debug.WriteLine("The exp date was: " + ExpDateFrom);
 
             if (searchString != null)
             {
@@ -45,6 +48,16 @@ namespace CovidAppV5.Controllers
                 caseLog = caseLog.Where(s => s.Name.Contains(searchString)
                                        || s.OrgNumber.Contains(searchString)
                                        || s.Division_District.Contains(searchString));
+            }
+
+            if (!String.IsNullOrEmpty(ExpDateFrom) && (!String.IsNullOrEmpty(ExpDateTo)))
+            {
+                fromDate = Convert.ToDateTime(ExpDateFrom);
+                toDate = Convert.ToDateTime(ExpDateTo);
+                System.Diagnostics.Debug.WriteLine("From DateTime: " + fromDate);
+                System.Diagnostics.Debug.WriteLine("To DateTime: " + toDate);
+
+                caseLog = caseLog.Where(s => s.DateOfExposure >= fromDate && s.DateOfExposure <= toDate);
             }
 
             switch (sortOrder)
@@ -68,6 +81,7 @@ namespace CovidAppV5.Controllers
                     caseLog = caseLog.OrderBy(s => s.Name);
                     break;
             }
+
             int pageSize = 10;
             int pageNumber = (page ?? 1);
             ViewBag.resultCount = caseLog.Count();

@@ -19,27 +19,34 @@
         @Html.ActionLink("Convert View To PDF", "pdfIndex", "Case_Log", 
       new {                                                     // routeValues
         searchString = ViewBag.CurrentFilter,
-        sort = ViewBag.CurrentSort
+        sort = ViewBag.CurrentSort,
+        expDateFrom = ViewBag.ExpDateFrom,
+        expDateTo = ViewBag.ExpDateTo
           },
     null)
     </p>
 
     @using (Html.BeginForm("Index", "Case_Log", FormMethod.Get))
     {
-    <p>
-        Find by name, org number, district/division, or date of exposure:
-    </p>
-    <p> 
-        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
-        <input type="submit" value="Search" />
-    </p>
+    <div class="row">
+        <div class="col-md-4">
+            <p>Find by name, org number, district/division:</p>
+            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+            <input type="submit" value="Search" />
+        </div>
+        <div class="col-md-4">
+            <p>Date From:</p>
+            @Html.TextBox("ExpDateFrom", ViewBag.ExpDateFrom as string)
+        </div>
+        <div class="col-md-4">
+            <p>Date To:</p>
+            @Html.TextBox("ExpDateTo", ViewBag.ExpDateTo as string)
+            <input type="submit" value="Find" />
+        </div>
+    </div>
     }
 
-    @using (Html.BeginForm("pdfIndex", "Case_Log", FormMethod.Get))
-    {
-
-    }
-
+       <br />    
 
     <table class="table">
         <tr>
