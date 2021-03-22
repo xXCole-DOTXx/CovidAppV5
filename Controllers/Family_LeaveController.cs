@@ -18,12 +18,15 @@ namespace CovidAppV5.Controllers
         private Covid19Entities db = new Covid19Entities();
 
         // GET: Family_Leave
-        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page, string leaveDateFrom, string leaveDateTo)
         {
+            System.Diagnostics.Debug.WriteLine("The date from was: " + leaveDateFrom);
+            System.Diagnostics.Debug.WriteLine("The date to was: " + leaveDateTo);
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.OrgSortParm = sortOrder == "Org" ? "Org_desc" : "Org";
             ViewBag.DivSortParm = sortOrder == "Div" ? "Div_desc" : "Div";
+            DateTime lFrom, lTo;
 
             if (searchString != null)
             {
@@ -44,6 +47,17 @@ namespace CovidAppV5.Controllers
                                        || s.OrgNumber.Contains(searchString)
                                        || s.Division_District.Contains(searchString));
             }
+
+            ViewBag.leaveDateFrom = leaveDateFrom;
+            ViewBag.leaveDateTo = leaveDateTo;
+
+            if (!String.IsNullOrEmpty(leaveDateFrom) && (!String.IsNullOrEmpty(leaveDateTo)))
+            {
+                lFrom = Convert.ToDateTime(leaveDateFrom);
+                lTo = Convert.ToDateTime(leaveDateTo);
+                fLeave = fLeave.Where(s => s.LeaveFrom >= lFrom && s.LeaveTo <= lTo);
+            }
+
             switch (sortOrder)
             {
                 case "name_desc":
@@ -71,7 +85,7 @@ namespace CovidAppV5.Controllers
             return View(fLeave.ToPagedList(pageNumber, pageSize));
         }
 
-        public ActionResult pdfIndex(string searchString, string currentFilter, string sortOrder, string sort)
+        public ActionResult pdfIndex(string searchString, string currentFilter, string sortOrder, string sort, string leaveDateFrom, string leaveDateTo)
         {
             System.Diagnostics.Debug.WriteLine("The sort string was: " + searchString);
             System.Diagnostics.Debug.WriteLine("The search string was: " + sort);
@@ -80,6 +94,7 @@ namespace CovidAppV5.Controllers
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.OrgSortParm = sortOrder == "Org" ? "Org_desc" : "Org";
             ViewBag.DivSortParm = sortOrder == "Div" ? "Div_desc" : "Div";
+            DateTime lFrom, lTo;
 
             var fLeave = from s in db.Family_Leave
                          select s;
@@ -89,6 +104,13 @@ namespace CovidAppV5.Controllers
                 fLeave = fLeave.Where(s => s.Name.Contains(searchString)
                                        || s.OrgNumber.Contains(searchString)
                                        || s.Division_District.Contains(searchString));
+            }
+
+            if (!String.IsNullOrEmpty(leaveDateFrom) && (!String.IsNullOrEmpty(leaveDateTo)))
+            {
+                lFrom = Convert.ToDateTime(leaveDateFrom);
+                lTo = Convert.ToDateTime(leaveDateTo);
+                fLeave = fLeave.Where(s => s.LeaveFrom >= lFrom && s.LeaveTo <= lTo);
             }
 
             switch (sort)
