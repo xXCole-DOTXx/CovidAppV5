@@ -32,7 +32,6 @@
         <div class="col-md-4">
             <p>Find by name, org number, district/division:</p>
             @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
-            <input type="submit" value="Search" />
         </div>
         <div class="col-md-4">
             <p>Date From:</p>
@@ -41,7 +40,7 @@
         <div class="col-md-4">
             <p>Date To:</p>
             @Html.TextBox("ExpDateTo", ViewBag.ExpDateTo as string)
-            <input type="submit" value="Find" />
+            <input type="submit" value="Search" />
         </div>
     </div>
     }

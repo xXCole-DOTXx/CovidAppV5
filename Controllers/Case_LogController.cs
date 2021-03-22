@@ -27,8 +27,6 @@ namespace CovidAppV5.Controllers
             ViewBag.DivSortParm = sortOrder == "Div" ? "Div_desc" : "Div";
             DateTime fromDate, toDate;
 
-            System.Diagnostics.Debug.WriteLine("The exp date was: " + ExpDateFrom);
-
             if (searchString != null)
             {
                 page = 1;
@@ -50,13 +48,13 @@ namespace CovidAppV5.Controllers
                                        || s.Division_District.Contains(searchString));
             }
 
+            ViewBag.ExpDateFrom = ExpDateFrom;
+            ViewBag.ExpDateTo = ExpDateTo;
+
             if (!String.IsNullOrEmpty(ExpDateFrom) && (!String.IsNullOrEmpty(ExpDateTo)))
             {
                 fromDate = Convert.ToDateTime(ExpDateFrom);
                 toDate = Convert.ToDateTime(ExpDateTo);
-                System.Diagnostics.Debug.WriteLine("From DateTime: " + fromDate);
-                System.Diagnostics.Debug.WriteLine("To DateTime: " + toDate);
-
                 caseLog = caseLog.Where(s => s.DateOfExposure >= fromDate && s.DateOfExposure <= toDate);
             }
 
@@ -88,15 +86,20 @@ namespace CovidAppV5.Controllers
             return View(caseLog.ToPagedList(pageNumber, pageSize));
         }
 
-        public ActionResult pdfIndex(string searchString, string currentFilter, string sortOrder, string sort)
+        public ActionResult pdfIndex(string searchString, string sortOrder, string sort, string expDateFrom, string expDateTo)
         {
             System.Diagnostics.Debug.WriteLine("The sort string was: " + searchString);
             System.Diagnostics.Debug.WriteLine("The search string was: " + sort);
+            System.Diagnostics.Debug.WriteLine("The date from was: " + expDateFrom);
+            System.Diagnostics.Debug.WriteLine("The date to was: " + expDateTo);
             ViewBag.CurrentFilter = searchString;
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.OrgSortParm = sortOrder == "Org" ? "Org_desc" : "Org";
             ViewBag.DivSortParm = sortOrder == "Div" ? "Div_desc" : "Div";
+            //ViewBag.ExpDateFrom = expDateFrom;
+            //ViewBag.ExpDateTo = expDateTo;
+            DateTime fromDate, toDate;
 
             var caseLog = from s in db.Case_Log
                           select s;
@@ -106,6 +109,16 @@ namespace CovidAppV5.Controllers
                 caseLog = caseLog.Where(s => s.Name.Contains(searchString)
                                        || s.OrgNumber.Contains(searchString)
                                        || s.Division_District.Contains(searchString));
+            }
+
+            if (!String.IsNullOrEmpty(expDateFrom) && (!String.IsNullOrEmpty(expDateTo)))
+            {
+                fromDate = Convert.ToDateTime(expDateFrom);
+                toDate = Convert.ToDateTime(expDateTo);
+                System.Diagnostics.Debug.WriteLine("From DateTime: " + fromDate);
+                System.Diagnostics.Debug.WriteLine("To DateTime: " + toDate);
+
+                caseLog = caseLog.Where(s => s.DateOfExposure >= fromDate && s.DateOfExposure <= toDate);
             }
 
             switch (sort)
