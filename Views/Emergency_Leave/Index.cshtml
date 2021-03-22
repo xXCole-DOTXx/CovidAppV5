@@ -18,23 +18,35 @@
 <p>
     @Html.ActionLink("Convert View To PDF", "pdfIndex", "Emergency_Leave",
   new
-       {// routeValues
-    searchString = ViewBag.CurrentFilter,
-    sort = ViewBag.CurrentSort
-      },
+  {// routeValues
+      searchString = ViewBag.CurrentFilter,
+      sort = ViewBag.CurrentSort,
+      leaveDateFrom = ViewBag.leaveDateFrom,
+      leaveDateTo = ViewBag.leaveDateTo
+  },
 null)
 </p>
 
 @using (Html.BeginForm("Index", "Emergency_Leave", FormMethod.Get))
 {
-    <p>
-        Find by name, org number, or district/division:
-    </p>
-    <p>
-        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
-        <input type="submit" value="Search" />
-    </p>
+    <div class="row">
+        <div class="col-md-4">
+            <p>Find by name, org number, district/division:</p>
+            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        </div>
+        <div class="col-md-4">
+            <p>Leave From:</p>
+            @Html.TextBox("leaveDateFrom", ViewBag.leaveDateFrom as string)
+        </div>
+        <div class="col-md-4">
+            <p>Leave To:</p>
+            @Html.TextBox("leaveDateTo", ViewBag.leaveDateTo as string)
+            <input type="submit" value="Search" />
+        </div>
+    </div>
 }
+
+<br/>
 
 <table class="table">
     <tr>

@@ -21,6 +21,8 @@ namespace CovidAppV5.Controllers
         // GET: Case_Log
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page, string ExpDateFrom, string ExpDateTo)
         {
+            System.Diagnostics.Debug.WriteLine("The date from was: " + ExpDateFrom);
+            System.Diagnostics.Debug.WriteLine("The date to was: " + ExpDateTo);
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.OrgSortParm = sortOrder == "Org" ? "Org_desc" : "Org";

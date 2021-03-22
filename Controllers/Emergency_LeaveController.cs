@@ -18,12 +18,15 @@ namespace CovidAppV5.Controllers
         private Covid19Entities db = new Covid19Entities();
 
         // GET: Emergency_Leave
-        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page, string leaveDateFrom, string leaveDateTo)
         {
+            System.Diagnostics.Debug.WriteLine("The date from was: " + leaveDateFrom);
+            System.Diagnostics.Debug.WriteLine("The date to was: " + leaveDateTo);
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.OrgSortParm = sortOrder == "Org" ? "Org_desc" : "Org";
             ViewBag.DivSortParm = sortOrder == "Div" ? "Div_desc" : "Div";
+            DateTime lFrom, lTo;
 
             if (searchString != null)
             {
@@ -38,12 +41,24 @@ namespace CovidAppV5.Controllers
 
             var eLeave = from s in db.Emergency_Leave
                           select s;
+
             if (!String.IsNullOrEmpty(searchString))
             {
                 eLeave = eLeave.Where(s => s.Name.Contains(searchString)
                                        || s.OrgNumber.Contains(searchString)
                                        || s.Division_District.Contains(searchString));
             }
+
+            ViewBag.leaveDateFrom = leaveDateFrom;
+            ViewBag.leaveDateTo = leaveDateTo;
+
+            if (!String.IsNullOrEmpty(leaveDateFrom) && (!String.IsNullOrEmpty(leaveDateTo)))
+            {
+                lFrom = Convert.ToDateTime(leaveDateFrom);
+                lTo = Convert.ToDateTime(leaveDateTo);
+                eLeave = eLeave.Where(s => s.LeaveFrom >= lFrom && s.LeaveTo <= lTo);
+            }
+
             switch (sortOrder)
             {
                 case "name_desc":
@@ -53,6 +68,7 @@ namespace CovidAppV5.Controllers
                     eLeave = eLeave.OrderBy(s => s.OrgNumber);
                     break;
                 case "Org_desc":
+
                     eLeave = eLeave.OrderByDescending(s => s.OrgNumber);
                     break;
                 case "Div":
@@ -65,13 +81,14 @@ namespace CovidAppV5.Controllers
                     eLeave = eLeave.OrderBy(s => s.Name);
                     break;
             }
+
             int pageSize = 10;
             int pageNumber = (page ?? 1);
             ViewBag.resultCount = eLeave.Count();
             return View(eLeave.ToPagedList(pageNumber, pageSize));
         }
 
-        public ActionResult pdfIndex(string searchString, string currentFilter, string sortOrder, string sort)
+        public ActionResult pdfIndex(string searchString, string currentFilter, string sortOrder, string sort, string leaveDateFrom, string leaveDateTo)
         {
             System.Diagnostics.Debug.WriteLine("The sort string was: " + searchString);
             System.Diagnostics.Debug.WriteLine("The search string was: " + sort);
@@ -80,6 +97,7 @@ namespace CovidAppV5.Controllers
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.OrgSortParm = sortOrder == "Org" ? "Org_desc" : "Org";
             ViewBag.DivSortParm = sortOrder == "Div" ? "Div_desc" : "Div";
+            DateTime lFrom, lTo;
 
             var eLeave = from s in db.Emergency_Leave
                           select s;
@@ -89,6 +107,13 @@ namespace CovidAppV5.Controllers
                 eLeave = eLeave.Where(s => s.Name.Contains(searchString)
                                        || s.OrgNumber.Contains(searchString)
                                        || s.Division_District.Contains(searchString));
+            }
+
+            if (!String.IsNullOrEmpty(leaveDateFrom) && (!String.IsNullOrEmpty(leaveDateTo)))
+            {
+                lFrom = Convert.ToDateTime(leaveDateFrom);
+                lTo = Convert.ToDateTime(leaveDateTo);
+                eLeave = eLeave.Where(s => s.LeaveFrom >= lFrom && s.LeaveTo <= lTo);
             }
 
             switch (sort)
