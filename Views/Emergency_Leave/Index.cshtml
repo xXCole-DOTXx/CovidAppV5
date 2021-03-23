@@ -51,7 +51,7 @@ null)
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter, leaveDateFrom = ViewBag.leaveDateFrom, leaveDateTo = ViewBag.leaveDateTo })
         </th>
         <th>
             Phone 1
@@ -60,10 +60,10 @@ null)
             Phone 2
         </th>
         <th>
-            @Html.ActionLink("Division/District", "Index", new { sortOrder = ViewBag.DivSortParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Division/District", "Index", new { sortOrder = ViewBag.DivSortParm, currentFilter = ViewBag.CurrentFilter, leaveDateFrom = ViewBag.leaveDateFrom, leaveDateTo = ViewBag.leaveDateTo })
         </th>
         <th>
-            @Html.ActionLink("Organization Number", "Index", new { sortOrder = ViewBag.OrgSortParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Organization Number", "Index", new { sortOrder = ViewBag.OrgSortParm, currentFilter = ViewBag.CurrentFilter, leaveDateFrom = ViewBag.leaveDateFrom, leaveDateTo = ViewBag.leaveDateTo })
         </th>
         <th>
             Unable to telework

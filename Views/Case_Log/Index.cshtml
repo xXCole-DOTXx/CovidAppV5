@@ -34,11 +34,11 @@
             @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
         </div>
         <div class="col-md-4">
-            <p>Date From:</p>
+            <p>Exposure Date From:</p>
             @Html.TextBox("ExpDateFrom", ViewBag.ExpDateFrom as string)
         </div>
         <div class="col-md-4">
-            <p>Date To:</p>
+            <p>Exposure Date To:</p>
             @Html.TextBox("ExpDateTo", ViewBag.ExpDateTo as string)
             <input type="submit" value="Search" />
         </div>
@@ -50,16 +50,16 @@
     <table class="table">
         <tr>
             <th>
-                @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+                @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter, ExpDateFrom = ViewBag.ExpDateFrom, ExpDateTo = ViewBag.ExpDateTo })
             </th>
             <th>
                 Phone Number
             </th>
             <th>
-                @Html.ActionLink("District/Division", "Index", new { sortOrder = ViewBag.DivSortParm, currentFilter = ViewBag.CurrentFilter })
+                @Html.ActionLink("District/Division", "Index", new { sortOrder = ViewBag.DivSortParm, currentFilter = ViewBag.CurrentFilter, ExpDateFrom = ViewBag.ExpDateFrom, ExpDateTo = ViewBag.ExpDateTo })
             </th>
             <th>
-                @Html.ActionLink("Organization Number", "Index", new { sortOrder = ViewBag.OrgSortParm, currentFilter = ViewBag.CurrentFilter })
+                @Html.ActionLink("Organization Number", "Index", new { sortOrder = ViewBag.OrgSortParm, currentFilter = ViewBag.CurrentFilter, ExpDateFrom = ViewBag.ExpDateFrom, ExpDateTo = ViewBag.ExpDateTo })
             </th>
             <th>
                 Date of Test
