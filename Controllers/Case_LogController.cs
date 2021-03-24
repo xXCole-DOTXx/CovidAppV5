@@ -183,7 +183,6 @@ namespace CovidAppV5.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Name,Phone1,Phone2,Division_District,OrgNumber,DateOfTest,DateOfExposure,NumberOfExposed,Notes,PathToFile")] Case_Log case_Log, HttpPostedFileBase PostedFile)
         {
-            Console.WriteLine("Testing print");
             string path = Server.MapPath("~/Case_Log_Docs/");
             if (!Directory.Exists(path))
             {
@@ -194,6 +193,7 @@ namespace CovidAppV5.Controllers
             if (PostedFile != null)
             {
                 string fileName = Path.GetFileName(PostedFile.FileName);
+                System.Diagnostics.Debug.WriteLine("Filename: " + fileName);
                 case_Log.PathToFile = fileName;
                 PostedFile.SaveAs(path + fileName);
                 ViewBag.Message += string.Format("<b>{0}</b> uploaded.<br />", fileName);
@@ -202,7 +202,28 @@ namespace CovidAppV5.Controllers
             if (ModelState.IsValid)
             {
                 db.Case_Log.Add(case_Log);
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }//This catch is how you figure out what the EntityValidationErrors are
+                catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+                {
+                    Exception raise = dbEx;
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            string message = string.Format("{0}:{1}",
+                                validationErrors.Entry.Entity.ToString(),
+                                validationError.ErrorMessage);
+                            // raise a new exception nesting  
+                            // the current instance as InnerException  
+                            raise = new InvalidOperationException(message, raise);
+                        }
+                    }
+                    throw raise;
+                }
+
                 return RedirectToAction("Index");
             }
 

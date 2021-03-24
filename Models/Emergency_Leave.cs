@@ -11,7 +11,10 @@ namespace CovidAppV5.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Web;
+
     public partial class Emergency_Leave
     {
         public int ID { get; set; }
@@ -30,5 +33,9 @@ namespace CovidAppV5.Models
         public Nullable<System.DateTime> LeaveFrom { get; set; }
         public Nullable<System.DateTime> LeaveTo { get; set; }
         public string PathToFile { get; set; }
+
+        [NotMapped]
+        [RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.doc|.pdf)$", ErrorMessage = "Only image files and document files accepted.")]
+        public HttpPostedFileBase PostedFile { get; set; }
     }
 }
