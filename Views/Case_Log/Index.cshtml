@@ -71,6 +71,15 @@
                 Number of exposed
             </th>
             <th>
+                First Shot
+            </th>
+            <th>
+                Second Shot
+            </th>
+            <th>
+                14 Days
+            </th>
+            <th>
                 Notes
             </th>
             <th></th>
@@ -78,37 +87,46 @@
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Phone1)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Division_District)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OrgNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateOfTest)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateOfExposure)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NumberOfExposed)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Notes)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                </td>
-            </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Division_District)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrgNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfTest)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfExposure)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfExposed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstShot)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SecondShot)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostVac14Days)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Notes)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID, searchString = ViewBag.CurrentFilter, sort = ViewBag.CurrentSort }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+        </td>
+    </tr>
         }
 
     </table>

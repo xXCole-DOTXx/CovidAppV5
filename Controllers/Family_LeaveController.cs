@@ -222,8 +222,10 @@ namespace CovidAppV5.Controllers
         }
 
         // GET: Family_Leave/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id, string searchString, string sort)
         {
+            Session["search"] = searchString;
+            Session["sort"] = sort;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -243,6 +245,9 @@ namespace CovidAppV5.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Name,Phone1,Phone2,Division_District,OrgNumber,QuarantineOrder,AdviseToSelfQuarantine,Symptoms,CaringForPerson,ChildCareUnavailable,SimilarConditions,Annual,PaidSick,EmergencyPaidSick,Unpaid,LeaveFrom,LeaveTo,PathToFile")] Family_Leave family_Leave, HttpPostedFileBase PostedFile)
         {
+            var sessionSearch = Convert.ToString(Session["search"]);
+            var sessionSort = Convert.ToString(Session["sort"]);
+
             var currentPath = "";
             var currentPathQuery = from item in db.Family_Leave
                                    where item.ID == family_Leave.ID
@@ -270,7 +275,7 @@ namespace CovidAppV5.Controllers
             {
                 db.Entry(family_Leave).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { searchString = sessionSearch, sortOrder = sessionSort });
             }
             return View(family_Leave);
         }

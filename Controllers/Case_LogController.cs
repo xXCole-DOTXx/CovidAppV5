@@ -21,8 +21,7 @@ namespace CovidAppV5.Controllers
         // GET: Case_Log
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page, string ExpDateFrom, string ExpDateTo)
         {
-            System.Diagnostics.Debug.WriteLine("The date from was: " + ExpDateFrom);
-            System.Diagnostics.Debug.WriteLine("The date to was: " + ExpDateTo);
+            System.Diagnostics.Debug.WriteLine("The search string was: " + searchString);
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.OrgSortParm = sortOrder == "Org" ? "Org_desc" : "Org";
@@ -181,7 +180,7 @@ namespace CovidAppV5.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Phone1,Phone2,Division_District,OrgNumber,DateOfTest,DateOfExposure,NumberOfExposed,Notes,PathToFile")] Case_Log case_Log, HttpPostedFileBase PostedFile)
+        public ActionResult Create([Bind(Include = "ID,Name,Phone1,Phone2,Division_District,OrgNumber,DateOfTest,DateOfExposure,NumberOfExposed,FirstShot,SecondShot,PostVac14Days,Notes,PathToFile")] Case_Log case_Log, HttpPostedFileBase PostedFile)
         {
             string path = Server.MapPath("~/Case_Log_Docs/");
             if (!Directory.Exists(path))
@@ -231,8 +230,10 @@ namespace CovidAppV5.Controllers
         }
 
         // GET: Case_Log/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id, string searchString, string sort)
         {
+            Session["search"] = searchString;
+            Session["sort"] = sort;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -252,6 +253,9 @@ namespace CovidAppV5.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Name,Phone1,Phone2,Division_District,OrgNumber,DateOfTest,DateOfExposure,NumberOfExposed,Notes,PathToFile")] Case_Log case_Log, HttpPostedFileBase PostedFile)
         {
+            var sessionSearch = Convert.ToString(Session["search"]);
+            var sessionSort = Convert.ToString(Session["sort"]);
+
             var currentPath = "";
             var currentPathQuery = from item in db.Case_Log
                                        where item.ID == case_Log.ID
@@ -278,7 +282,7 @@ namespace CovidAppV5.Controllers
             {
                 db.Entry(case_Log).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { searchString = sessionSearch, sortOrder = sessionSort});
             }
             return View(case_Log);
         }

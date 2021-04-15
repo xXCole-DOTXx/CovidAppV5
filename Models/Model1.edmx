@@ -9,48 +9,51 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Phone1" Type="nvarchar" MaxLength="50" />
-          <Property Name="Phone2" Type="nvarchar" MaxLength="50" />
-          <Property Name="Division/District" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone1" Type="nvarchar" MaxLength="15" />
+          <Property Name="Phone2" Type="nvarchar" MaxLength="15" />
+          <Property Name="Division/District" Type="nvarchar" MaxLength="25" Nullable="false" />
           <Property Name="OrgNumber" Type="nvarchar" MaxLength="4" />
           <Property Name="DateOfTest" Type="datetime" />
           <Property Name="DateOfExposure" Type="datetime" />
           <Property Name="NumberOfExposed" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstShot" Type="bit" />
+          <Property Name="SecondShot" Type="bit" />
+          <Property Name="PostVac14Days" Type="bit" />
           <Property Name="Notes" Type="nvarchar(max)" />
-          <Property Name="PathToFile" Type="nvarchar" MaxLength="1" />
+          <Property Name="PathToFile" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Emergency_Leave">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Phone1" Type="nvarchar" MaxLength="50" />
-          <Property Name="Phone2" Type="nvarchar" MaxLength="50" />
-          <Property Name="Division/District" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone1" Type="nvarchar" MaxLength="15" />
+          <Property Name="Phone2" Type="nvarchar" MaxLength="15" />
+          <Property Name="Division/District" Type="nvarchar" MaxLength="25" Nullable="false" />
           <Property Name="OrgNumber" Type="nvarchar" MaxLength="4" Nullable="false" />
           <Property Name="UnableToTelework" Type="bit" Nullable="false" />
           <Property Name="CaringForMinor" Type="bit" Nullable="false" />
           <Property Name="SpecialCircumstance" Type="bit" Nullable="false" />
-          <Property Name="Annual" Type="float" Nullable="false" />
-          <Property Name="PaidSick" Type="float" Nullable="false" />
-          <Property Name="EmergencyPaidSick" Type="float" Nullable="false" />
-          <Property Name="Unpaid" Type="float" Nullable="false" />
+          <Property Name="Annual" Type="float" />
+          <Property Name="PaidSick" Type="float" />
+          <Property Name="EmergencyPaidSick" Type="float" />
+          <Property Name="Unpaid" Type="float" />
           <Property Name="LeaveFrom" Type="datetime" />
           <Property Name="LeaveTo" Type="datetime" />
-          <Property Name="PathToFile" Type="nvarchar" MaxLength="50" />
+          <Property Name="PathToFile" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Family_Leave">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Phone1" Type="nvarchar" MaxLength="50" />
-          <Property Name="Phone2" Type="nvarchar" MaxLength="50" />
-          <Property Name="Division/District" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone1" Type="nvarchar" MaxLength="15" />
+          <Property Name="Phone2" Type="nvarchar" MaxLength="15" />
+          <Property Name="Division/District" Type="nvarchar" MaxLength="25" Nullable="false" />
           <Property Name="OrgNumber" Type="nvarchar" MaxLength="4" Nullable="false" />
           <Property Name="QuarantineOrder" Type="bit" Nullable="false" />
           <Property Name="AdviseToSelfQuarantine" Type="bit" Nullable="false" />
@@ -81,15 +84,18 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Phone1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Phone2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Division_District" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone1" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Phone2" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Division_District" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="OrgNumber" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
           <Property Name="DateOfTest" Type="DateTime" Precision="3"  />
           <Property Name="DateOfExposure" Type="DateTime" Precision="3" />
           <Property Name="NumberOfExposed" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PathToFile" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="PathToFile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FirstShot" Type="Boolean" />
+          <Property Name="SecondShot" Type="Boolean" />
+          <Property Name="PostVac14Days" Type="Boolean" />
         </EntityType>
         <EntityType Name="Emergency_Leave">
           <Key>
@@ -97,20 +103,20 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Phone1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Phone2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Division_District" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone1" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Phone2" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Division_District" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="OrgNumber" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UnableToTelework" Type="Boolean" Nullable="false" />
           <Property Name="CaringForMinor" Type="Boolean" Nullable="false" />
           <Property Name="SpecialCircumstance" Type="Boolean" Nullable="false" />
-          <Property Name="Annual" Type="Double" Nullable="false" />
-          <Property Name="PaidSick" Type="Double" Nullable="false" />
-          <Property Name="EmergencyPaidSick" Type="Double" Nullable="false" />
-          <Property Name="Unpaid" Type="Double" Nullable="false" />
+          <Property Name="Annual" Type="Double" />
+          <Property Name="PaidSick" Type="Double" />
+          <Property Name="EmergencyPaidSick" Type="Double" />
+          <Property Name="Unpaid" Type="Double" />
           <Property Name="LeaveFrom" Type="DateTime" Precision="3" />
           <Property Name="LeaveTo" Type="DateTime" Precision="3" />
-          <Property Name="PathToFile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PathToFile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Family_Leave">
           <Key>
@@ -118,9 +124,9 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Phone1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Phone2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Division_District" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone1" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Phone2" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Division_District" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="OrgNumber" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="QuarantineOrder" Type="Boolean" Nullable="false" />
           <Property Name="AdviseToSelfQuarantine" Type="Boolean" Nullable="false" />
@@ -150,6 +156,9 @@
           <EntitySetMapping Name="Case_Log">
             <EntityTypeMapping TypeName="Covid19Model.Case_Log">
               <MappingFragment StoreEntitySet="Case_Log">
+                <ScalarProperty Name="PostVac14Days" ColumnName="PostVac14Days" />
+                <ScalarProperty Name="SecondShot" ColumnName="SecondShot" />
+                <ScalarProperty Name="FirstShot" ColumnName="FirstShot" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Phone1" ColumnName="Phone1" />

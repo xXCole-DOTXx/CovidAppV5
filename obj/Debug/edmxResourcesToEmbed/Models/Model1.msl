@@ -4,6 +4,9 @@
     <EntitySetMapping Name="Case_Log">
       <EntityTypeMapping TypeName="Covid19Model.Case_Log">
         <MappingFragment StoreEntitySet="Case_Log">
+          <ScalarProperty Name="PostVac14Days" ColumnName="PostVac14Days" />
+          <ScalarProperty Name="SecondShot" ColumnName="SecondShot" />
+          <ScalarProperty Name="FirstShot" ColumnName="FirstShot" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Phone1" ColumnName="Phone1" />

@@ -141,7 +141,7 @@ null)
                 @Html.DisplayFor(modelItem => item.LeaveTo)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID, searchString = ViewBag.CurrentFilter, sort = ViewBag.CurrentSort }) |
                 @Html.ActionLink("Details", "Details", new { id = item.ID }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.ID })
             </td>

@@ -223,8 +223,10 @@ namespace CovidAppV5.Controllers
         }
 
         // GET: Emergency_Leave/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id, string searchString, string sort)
         {
+            Session["search"] = searchString;
+            Session["sort"] = sort;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -244,6 +246,9 @@ namespace CovidAppV5.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Name,Phone1,Phone2,Division_District,OrgNumber,UnableToTelework,CaringForMinor,SpecialCircumstance,Annual,PaidSick,EmergencyPaidSick,Unpaid,LeaveFrom,LeaveTo,PathToFile")] Emergency_Leave emergency_Leave, HttpPostedFileBase PostedFile)
         {
+            var sessionSearch = Convert.ToString(Session["search"]);
+            var sessionSort = Convert.ToString(Session["sort"]);
+
             var currentPath = "";
             var currentPathQuery = from item in db.Emergency_Leave
                                    where item.ID == emergency_Leave.ID
@@ -271,7 +276,7 @@ namespace CovidAppV5.Controllers
             {
                 db.Entry(emergency_Leave).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { searchString = sessionSearch, sortOrder = sessionSort });
             }
             return View(emergency_Leave);
         }

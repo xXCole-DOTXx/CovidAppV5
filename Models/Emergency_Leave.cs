@@ -26,10 +26,10 @@ namespace CovidAppV5.Models
         public bool UnableToTelework { get; set; }
         public bool CaringForMinor { get; set; }
         public bool SpecialCircumstance { get; set; }
-        public double Annual { get; set; }
-        public double PaidSick { get; set; }
-        public double EmergencyPaidSick { get; set; }
-        public double Unpaid { get; set; }
+        public Nullable<double> Annual { get; set; }
+        public Nullable<double> PaidSick { get; set; }
+        public Nullable<double> EmergencyPaidSick { get; set; }
+        public Nullable<double> Unpaid { get; set; }
         public Nullable<System.DateTime> LeaveFrom { get; set; }
         public Nullable<System.DateTime> LeaveTo { get; set; }
         public string PathToFile { get; set; }

@@ -4,48 +4,51 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Phone1" Type="nvarchar" MaxLength="50" />
-    <Property Name="Phone2" Type="nvarchar" MaxLength="50" />
-    <Property Name="Division/District" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone1" Type="nvarchar" MaxLength="15" />
+    <Property Name="Phone2" Type="nvarchar" MaxLength="15" />
+    <Property Name="Division/District" Type="nvarchar" MaxLength="25" Nullable="false" />
     <Property Name="OrgNumber" Type="nvarchar" MaxLength="4" />
     <Property Name="DateOfTest" Type="datetime" />
     <Property Name="DateOfExposure" Type="datetime" />
     <Property Name="NumberOfExposed" Type="nvarchar" MaxLength="50" />
+    <Property Name="FirstShot" Type="bit" />
+    <Property Name="SecondShot" Type="bit" />
+    <Property Name="PostVac14Days" Type="bit" />
     <Property Name="Notes" Type="nvarchar(max)" />
-    <Property Name="PathToFile" Type="nvarchar" MaxLength="1" />
+    <Property Name="PathToFile" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Emergency_Leave">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Phone1" Type="nvarchar" MaxLength="50" />
-    <Property Name="Phone2" Type="nvarchar" MaxLength="50" />
-    <Property Name="Division/District" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone1" Type="nvarchar" MaxLength="15" />
+    <Property Name="Phone2" Type="nvarchar" MaxLength="15" />
+    <Property Name="Division/District" Type="nvarchar" MaxLength="25" Nullable="false" />
     <Property Name="OrgNumber" Type="nvarchar" MaxLength="4" Nullable="false" />
     <Property Name="UnableToTelework" Type="bit" Nullable="false" />
     <Property Name="CaringForMinor" Type="bit" Nullable="false" />
     <Property Name="SpecialCircumstance" Type="bit" Nullable="false" />
-    <Property Name="Annual" Type="float" Nullable="false" />
-    <Property Name="PaidSick" Type="float" Nullable="false" />
-    <Property Name="EmergencyPaidSick" Type="float" Nullable="false" />
-    <Property Name="Unpaid" Type="float" Nullable="false" />
+    <Property Name="Annual" Type="float" />
+    <Property Name="PaidSick" Type="float" />
+    <Property Name="EmergencyPaidSick" Type="float" />
+    <Property Name="Unpaid" Type="float" />
     <Property Name="LeaveFrom" Type="datetime" />
     <Property Name="LeaveTo" Type="datetime" />
-    <Property Name="PathToFile" Type="nvarchar" MaxLength="50" />
+    <Property Name="PathToFile" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Family_Leave">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Phone1" Type="nvarchar" MaxLength="50" />
-    <Property Name="Phone2" Type="nvarchar" MaxLength="50" />
-    <Property Name="Division/District" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone1" Type="nvarchar" MaxLength="15" />
+    <Property Name="Phone2" Type="nvarchar" MaxLength="15" />
+    <Property Name="Division/District" Type="nvarchar" MaxLength="25" Nullable="false" />
     <Property Name="OrgNumber" Type="nvarchar" MaxLength="4" Nullable="false" />
     <Property Name="QuarantineOrder" Type="bit" Nullable="false" />
     <Property Name="AdviseToSelfQuarantine" Type="bit" Nullable="false" />

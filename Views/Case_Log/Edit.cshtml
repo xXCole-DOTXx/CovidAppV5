@@ -7,10 +7,10 @@
 <h2>Edit COVID 19 Questionnaire</h2>
 
 
-@using (Html.BeginForm("Edit", "Case_Log", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Edit", "Case_Log", FormMethod.Post, new { enctype = "multipart/form-data"}))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -77,6 +77,36 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.NumberOfExposed, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.NumberOfExposed, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FirstShot, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.FirstShot)
+                    @Html.ValidationMessageFor(model => model.FirstShot, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SecondShot, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.SecondShot)
+                    @Html.ValidationMessageFor(model => model.SecondShot, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PostVac14Days, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.PostVac14Days)
+                    @Html.ValidationMessageFor(model => model.PostVac14Days, "", new { @class = "text-danger" })
+                </div>
             </div>
         </div>
 

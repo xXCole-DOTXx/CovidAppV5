@@ -28,6 +28,9 @@ namespace CovidAppV5.Models
         public string NumberOfExposed { get; set; }
         public string Notes { get; set; }
         public string PathToFile { get; set; }
+        public Nullable<bool> FirstShot { get; set; }
+        public Nullable<bool> SecondShot { get; set; }
+        public Nullable<bool> PostVac14Days { get; set; }
 
         [NotMapped]
         [RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.doc|.pdf)$", ErrorMessage = "Only image files and document files accepted.")]

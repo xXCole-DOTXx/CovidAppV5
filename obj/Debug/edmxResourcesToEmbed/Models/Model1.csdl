@@ -6,15 +6,18 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Phone1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Phone2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Division_District" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone1" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Phone2" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Division_District" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="OrgNumber" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
     <Property Name="DateOfTest" Type="DateTime" Precision="3" />
     <Property Name="DateOfExposure" Type="DateTime" Precision="3" />
     <Property Name="NumberOfExposed" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="PathToFile" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="PathToFile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FirstShot" Type="Boolean" />
+    <Property Name="SecondShot" Type="Boolean" />
+    <Property Name="PostVac14Days" Type="Boolean" />
   </EntityType>
   <EntityType Name="Emergency_Leave">
     <Key>
@@ -22,20 +25,20 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Phone1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Phone2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Division_District" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone1" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Phone2" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Division_District" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="OrgNumber" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="UnableToTelework" Type="Boolean" Nullable="false" />
     <Property Name="CaringForMinor" Type="Boolean" Nullable="false" />
     <Property Name="SpecialCircumstance" Type="Boolean" Nullable="false" />
-    <Property Name="Annual" Type="Double" Nullable="false" />
-    <Property Name="PaidSick" Type="Double" Nullable="false" />
-    <Property Name="EmergencyPaidSick" Type="Double" Nullable="false" />
-    <Property Name="Unpaid" Type="Double" Nullable="false" />
+    <Property Name="Annual" Type="Double" />
+    <Property Name="PaidSick" Type="Double" />
+    <Property Name="EmergencyPaidSick" Type="Double" />
+    <Property Name="Unpaid" Type="Double" />
     <Property Name="LeaveFrom" Type="DateTime" Precision="3" />
     <Property Name="LeaveTo" Type="DateTime" Precision="3" />
-    <Property Name="PathToFile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PathToFile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Family_Leave">
     <Key>
@@ -43,9 +46,9 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Phone1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Phone2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Division_District" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone1" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Phone2" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Division_District" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="OrgNumber" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="QuarantineOrder" Type="Boolean" Nullable="false" />
     <Property Name="AdviseToSelfQuarantine" Type="Boolean" Nullable="false" />

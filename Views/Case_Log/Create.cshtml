@@ -79,6 +79,39 @@
     </div>
 
     <div class="form-group">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="checkbox">
+                <b>I have recieved my first COVID 19 vaccine:</b>
+                @Html.EditorFor(model => model.FirstShot)
+                @Html.ValidationMessageFor(model => model.FirstShot, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="checkbox">
+                <b>I have recieved my second COVID 19 vaccine:</b>
+                @Html.EditorFor(model => model.SecondShot)
+                @Html.ValidationMessageFor(model => model.SecondShot, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="checkbox">
+                <b>It has been 14 days post vaccination:</b>
+                @Html.EditorFor(model => model.PostVac14Days)
+                @Html.ValidationMessageFor(model => model.PostVac14Days, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
         @Html.LabelFor(model => model.Notes, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "form-control" } })
