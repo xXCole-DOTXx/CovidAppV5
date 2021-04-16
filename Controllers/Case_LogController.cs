@@ -21,7 +21,6 @@ namespace CovidAppV5.Controllers
         // GET: Case_Log
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page, string ExpDateFrom, string ExpDateTo)
         {
-            System.Diagnostics.Debug.WriteLine("The search string was: " + searchString);
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.OrgSortParm = sortOrder == "Org" ? "Org_desc" : "Org";
@@ -232,8 +231,8 @@ namespace CovidAppV5.Controllers
         // GET: Case_Log/Edit/5
         public ActionResult Edit(int? id, string searchString, string sort)
         {
-            Session["search"] = searchString;
-            Session["sort"] = sort;
+            ViewBag.CurrentSort = sort;
+            ViewBag.CurrentFilter = searchString;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -251,11 +250,8 @@ namespace CovidAppV5.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Phone1,Phone2,Division_District,OrgNumber,DateOfTest,DateOfExposure,NumberOfExposed,Notes,PathToFile")] Case_Log case_Log, HttpPostedFileBase PostedFile)
+        public ActionResult Edit([Bind(Include = "ID,Name,Phone1,Phone2,Division_District,OrgNumber,DateOfTest,DateOfExposure,NumberOfExposed,Notes,PathToFile")] Case_Log case_Log, HttpPostedFileBase PostedFile, string searchString, string sortOrder)
         {
-            var sessionSearch = Convert.ToString(Session["search"]);
-            var sessionSort = Convert.ToString(Session["sort"]);
-
             var currentPath = "";
             var currentPathQuery = from item in db.Case_Log
                                        where item.ID == case_Log.ID
@@ -282,7 +278,7 @@ namespace CovidAppV5.Controllers
             {
                 db.Entry(case_Log).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index", new { searchString = sessionSearch, sortOrder = sessionSort});
+                return RedirectToAction("Index", new { searchString = searchString, sortOrder = sortOrder});
             }
             return View(case_Log);
         }

@@ -224,8 +224,8 @@ namespace CovidAppV5.Controllers
         // GET: Family_Leave/Edit/5
         public ActionResult Edit(int? id, string searchString, string sort)
         {
-            Session["search"] = searchString;
-            Session["sort"] = sort;
+            ViewBag.CurrentSort = sort;
+            ViewBag.CurrentFilter = searchString;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -243,10 +243,8 @@ namespace CovidAppV5.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Phone1,Phone2,Division_District,OrgNumber,QuarantineOrder,AdviseToSelfQuarantine,Symptoms,CaringForPerson,ChildCareUnavailable,SimilarConditions,Annual,PaidSick,EmergencyPaidSick,Unpaid,LeaveFrom,LeaveTo,PathToFile")] Family_Leave family_Leave, HttpPostedFileBase PostedFile)
+        public ActionResult Edit([Bind(Include = "ID,Name,Phone1,Phone2,Division_District,OrgNumber,QuarantineOrder,AdviseToSelfQuarantine,Symptoms,CaringForPerson,ChildCareUnavailable,SimilarConditions,Annual,PaidSick,EmergencyPaidSick,Unpaid,LeaveFrom,LeaveTo,PathToFile")] Family_Leave family_Leave, HttpPostedFileBase PostedFile, string searchString, string sortOrder)
         {
-            var sessionSearch = Convert.ToString(Session["search"]);
-            var sessionSort = Convert.ToString(Session["sort"]);
 
             var currentPath = "";
             var currentPathQuery = from item in db.Family_Leave
@@ -275,7 +273,7 @@ namespace CovidAppV5.Controllers
             {
                 db.Entry(family_Leave).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index", new { searchString = sessionSearch, sortOrder = sessionSort });
+                return RedirectToAction("Index", new { searchString = searchString, sortOrder = sortOrder });
             }
             return View(family_Leave);
         }
