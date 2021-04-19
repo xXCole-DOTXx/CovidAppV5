@@ -122,7 +122,7 @@
             @Html.DisplayFor(modelItem => item.Notes)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.ID, searchString = ViewBag.CurrentFilter, sort = ViewBag.CurrentSort }) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID, searchString = ViewBag.CurrentFilter, sort = ViewBag.CurrentSort, page = ViewBag.Page }) |
             @Html.ActionLink("Details", "Details", new { id = item.ID }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.ID })
         </td>

@@ -25,11 +25,14 @@ namespace CovidAppV5.Controllers
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.OrgSortParm = sortOrder == "Org" ? "Org_desc" : "Org";
             ViewBag.DivSortParm = sortOrder == "Div" ? "Div_desc" : "Div";
+            ViewBag.Page = page;
             DateTime fromDate, toDate;
 
             if (searchString != null)
-            {
-                page = 1;
+            { if (page <= 1)
+                {
+                    page = 1;
+                }
             }
             else
             {
@@ -229,10 +232,12 @@ namespace CovidAppV5.Controllers
         }
 
         // GET: Case_Log/Edit/5
-        public ActionResult Edit(int? id, string searchString, string sort)
+        public ActionResult Edit(int? id, string searchString, string sort, int? page)
         {
             ViewBag.CurrentSort = sort;
             ViewBag.CurrentFilter = searchString;
+            ViewBag.PageNum = page;
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -246,12 +251,11 @@ namespace CovidAppV5.Controllers
         }
 
         // POST: Case_Log/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Phone1,Phone2,Division_District,OrgNumber,DateOfTest,DateOfExposure,NumberOfExposed,Notes,PathToFile")] Case_Log case_Log, HttpPostedFileBase PostedFile, string searchString, string sortOrder)
+        public ActionResult Edit([Bind(Include = "ID,Name,Phone1,Phone2,Division_District,OrgNumber,DateOfTest,DateOfExposure,NumberOfExposed,Notes,PathToFile")] Case_Log case_Log, HttpPostedFileBase PostedFile, string searchString, string sortOrder, int? page)
         {
+            System.Diagnostics.Debug.WriteLine("The page # on the save action result was: " + page);
             var currentPath = "";
             var currentPathQuery = from item in db.Case_Log
                                        where item.ID == case_Log.ID
@@ -278,7 +282,7 @@ namespace CovidAppV5.Controllers
             {
                 db.Entry(case_Log).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index", new { searchString = searchString, sortOrder = sortOrder});
+                return RedirectToAction("Index", new { searchString = searchString, sortOrder = sortOrder, page = page});
             }
             return View(case_Log);
         }

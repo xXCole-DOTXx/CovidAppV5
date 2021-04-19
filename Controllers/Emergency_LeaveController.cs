@@ -26,11 +26,15 @@ namespace CovidAppV5.Controllers
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.OrgSortParm = sortOrder == "Org" ? "Org_desc" : "Org";
             ViewBag.DivSortParm = sortOrder == "Div" ? "Div_desc" : "Div";
+            ViewBag.Page = page;
             DateTime lFrom, lTo;
 
             if (searchString != null)
             {
-                page = 1;
+                if (page <= 1)
+                {
+                    page = 1;
+                }
             }
             else
             {
@@ -223,10 +227,12 @@ namespace CovidAppV5.Controllers
         }
 
         // GET: Emergency_Leave/Edit/5
-        public ActionResult Edit(int? id, string searchString, string sort)
+        public ActionResult Edit(int? id, string searchString, string sort, int? page)
         {
             ViewBag.CurrentSort = sort;
             ViewBag.CurrentFilter = searchString;
+            ViewBag.PageNum = page;
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -244,7 +250,7 @@ namespace CovidAppV5.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Phone1,Phone2,Division_District,OrgNumber,UnableToTelework,CaringForMinor,SpecialCircumstance,Annual,PaidSick,EmergencyPaidSick,Unpaid,LeaveFrom,LeaveTo,PathToFile")] Emergency_Leave emergency_Leave, HttpPostedFileBase PostedFile, string searchString, string sortOrder)
+        public ActionResult Edit([Bind(Include = "ID,Name,Phone1,Phone2,Division_District,OrgNumber,UnableToTelework,CaringForMinor,SpecialCircumstance,Annual,PaidSick,EmergencyPaidSick,Unpaid,LeaveFrom,LeaveTo,PathToFile")] Emergency_Leave emergency_Leave, HttpPostedFileBase PostedFile, string searchString, string sortOrder, int? page)
         {
 
             var currentPath = "";
@@ -274,7 +280,7 @@ namespace CovidAppV5.Controllers
             {
                 db.Entry(emergency_Leave).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index", new { searchString = searchString, sortOrder = sortOrder });
+                return RedirectToAction("Index", new { searchString = searchString, sortOrder = sortOrder, page = page });
             }
             return View(emergency_Leave);
         }
